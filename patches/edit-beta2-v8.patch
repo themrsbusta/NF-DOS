@@ -1,0 +1,103 @@
+diff --git a/third_party/edit/source/console.c b/third_party/edit/source/console.c
+index c9f04a1..7dc0d11 100644
+--- a/third_party/edit/source/console.c
++++ b/third_party/edit/source/console.c
+@@ -56,7 +56,7 @@ int Xbioskey(int cmd)
+     kregs.h.ah = (char) (keybase + cmd);
+     kregs.h.al = 0;
+     int86(0x16, &kregs, &kregs);
+-    if ( (cmd == 1) && (kregs.x.flags & 0x40 /* zero flag */) )
++    if ( (cmd == 1) && (!kbhit() /* Watcom does not expose ZF from int86 */) )
+         return 0;
+     return kregs.x.ax;
+ }
+diff --git a/third_party/edit/source/edit.c b/third_party/edit/source/edit.c
+index b2a0aca..46e13d7 100644
+--- a/third_party/edit/source/edit.c
++++ b/third_party/edit/source/edit.c
+@@ -160,6 +160,12 @@ void main(int argc, char *argv[])
+         }
+ 
+     while (dispatch_message());
++    {
++        union REGS dosExit;
++        dosExit.h.ah = 0x4c;
++        dosExit.h.al = 0;
++        int86(0x21, &dosExit, &dosExit);
++    }
+ 
+ }
+ 
+@@ -284,7 +290,7 @@ static int MemoPadProc(WINDOW wnd,MESSAGE msg,PARAM p1,PARAM p2)
+                                "   D-Flat application published  \n"
+                                "   in Dr. Dobb's Journal.        \n"
+                                "                                 \n"
+-                               "    �������������������������    \n"
++                               "    �������������������������    \n"
+                                "                                 \n"
+                                "FreeDOS Edit is a clone of MS-DOS\n"
+                                "editor for the FreeDOS Project   \n"
+diff --git a/third_party/edit/source/menubar.c b/third_party/edit/source/menubar.c
+index 6574873..bd08eee 100644
+--- a/third_party/edit/source/menubar.c
++++ b/third_party/edit/source/menubar.c
+@@ -208,7 +208,7 @@ static void KeyboardMsg(WINDOW wnd, PARAM p1)
+             else 
+                 SendMessage(wnd, PAINT, 0, 0);
+             break;
+-#ifndef HOOKKEYB:
++#ifndef HOOKKEYB
+ 	case LARROW: /* hope that makes sense */
+ #endif
+         case BS:
+diff --git a/third_party/edit/source/message.c b/third_party/edit/source/message.c
+index df4891e..b79ac0f 100644
+--- a/third_party/edit/source/message.c
++++ b/third_party/edit/source/message.c
+@@ -4,7 +4,7 @@
+ 
+ #define BLINKING_CLOCK 0	/* set to 1 to make the clock blink */
+ 		/* blinking is off by default since 0.7c */
+-#define USECBRKHNLDR 1 /* removing this line disables ctrl-break processing */
++/* Watcom build: use DOS default Ctrl-Break handling. */
+ /* #define OLDCRITERR 1 */
+ 		/* ^-- remove to try out new harderr() crit error handler */
+ /* other defines: HOOKTIMER (use obsolete int 8 handler) and of course */
+@@ -379,15 +379,9 @@ static void near collect_events(void)
+ 
+     /* -------- test for a clock event (one/second) ------- */
+     if (timed_out(clocktimer))    {
+-        struct COUNTRY thiscountry; /* country support new 0.7a */
+         time_t t = time(NULL);	/* the current time */
+         char timesep = ':';	/* default 12:12:12am separator */
+         int ampmflag = 1;
+-        if ( country(0 /* current */, &thiscountry) ) { /* dos.h (int 21.38) */
+-          timesep = thiscountry.co_tmsep[0];
+-          ampmflag = (thiscountry.co_time == 0); /* 0 ampm 1 24h clock */
+-          /* co_date: 0 USA mm dd yy 1 EU dd mm yy 2 JP yy mm dd */
+-        }
+ #if BLINKING_CLOCK
+         /* ------- blink the ':'s at one-second intervals ----- */
+         flipflop = (!flipflop);
+diff --git a/third_party/edit/source/video.c b/third_party/edit/source/video.c
+index e43209f..806a8ad 100644
+--- a/third_party/edit/source/video.c
++++ b/third_party/edit/source/video.c
+@@ -287,7 +287,7 @@ void scroll_window(WINDOW wnd, RECT rc, int d)
+ static void near waitforretrace(void)
+ {
+ 	/* disable interrupts */
+-	disable();
++	/* Keep interrupts enabled in the Watcom DOS build. */
+ 
+ 			/* next 2 lines are to catch a FULL vretrace */
+         if (inp(0x3da) & 8)		/* if inside vertical retrace */
+@@ -297,7 +297,7 @@ static void near waitforretrace(void)
+ 	while (!( inp(0x3da) & 0x01 ));	/* wait for 1st hretrace in it */
+ 
+ 	/* re-enable interrupts */
+-	enable();
++
+ }
+ 
+ void movetoscreen(void *bf, int offset, int len)

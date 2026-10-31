@@ -1,0 +1,107 @@
+diff --git a/suppl/nls_c.h b/suppl/nls_c.h
+index d4be89d..035882a 100644
+--- a/suppl/nls_c.h
++++ b/suppl/nls_c.h
+@@ -29,7 +29,7 @@
+ #include <portable.h>
+ 
+ int toLower(int ch);
+-int toUpper(int ch);
++int supplToUpper(int ch);
+ int toFUpper(int ch);
+ 
+ #define memcmpI MemiCmp
+@@ -55,3 +55,4 @@ int toxdigit(int ch);
+ 
+ 
+ #endif
++
+diff --git a/suppl/src/dmemcmpf.c b/suppl/src/dmemcmpf.c
+index c78c484..a948917 100644
+--- a/suppl/src/dmemcmpf.c
++++ b/suppl/src/dmemcmpf.c
+@@ -61,7 +61,7 @@ int _fMemiCmp(unsigned const dseg, unsigned dofs
+ 	if((sseg | sofs) == 0)
+ 		DBG_RETURN_I(-1)
+ 
+-	while((d = toUpper(peekb(dseg, dofs++)) - toUpper(peekb(sseg, sofs++)))
++	while((d = supplToUpper(peekb(dseg, dofs++)) - supplToUpper(peekb(sseg, sofs++)))
+ 	 == 0 && --length);
+ 
+ 	DBG_RETURN_I( d)
+@@ -82,8 +82,9 @@ int _fMemiCmp(const byte far * dest, const byte far * src, unsigned length)
+ 	if(src == 0)
+ 		DBG_RETURN_I(-1)
+ 
+-	while((d = toUpper(*dest++) - toUpper(*src++)) == 0 && --length);
++	while((d = supplToUpper(*dest++) - supplToUpper(*src++)) == 0 && --length);
+ 
+ 	DBG_RETURN_I( d)
+ }
+ #endif
++
+diff --git a/suppl/src/dstrupr.c b/suppl/src/dstrupr.c
+index 4d25130..ff6d4df 100644
+--- a/suppl/src/dstrupr.c
++++ b/suppl/src/dstrupr.c
+@@ -21,7 +21,7 @@
+ 
+ 	char *StrUpr(char s[])
+ 
+-	Upcase the string s[] using the toUpper() function.
++	Upcase the string s[] using the supplToUpper() function.
+ 	s may be NULL.
+ 
+ 	Return:
+@@ -62,7 +62,8 @@ char *StrUpr(char *s)
+ 	DBG_ENTER("StrUpr", Suppl_nls)
+ 
+ 	if((p = s) != 0)
+-		while((*p = toUpper(*p)) != NUL)
++		while((*p = supplToUpper(*p)) != NUL)
+ 			++p;
+ 	DBG_RETURN_S( s)
+ }
++
+diff --git a/suppl/src/toupperx.c b/suppl/src/toupperx.c
+index ff54060..6f10501 100644
+--- a/suppl/src/toupperx.c
++++ b/suppl/src/toupperx.c
+@@ -28,12 +28,12 @@ lo(ng description): Transforms a character to uppercase according the
+ 	available, the standard C \tok{toupper()} function is used.
+ pr(erequistes): 
+ va(lue): upcased character in the range: 0..255
+-re(lated to): nlsInfo toUpper
++re(lated to): nlsInfo supplToUpper
+ se(condary subsystems): 
+ bu(gs): 
+ co(mpilers): 
+ 
+-ob: toUpper
++ob: supplToUpper
+ su(bsystem): nls
+ ty(pe): 
+ sh(ort description): Upcases a character
+@@ -56,7 +56,7 @@ lo(ng description): Transforms a character to lowercase according the
+ 	available, the standard C \tok{tolower()} function is used.
+ pr(erequistes): 
+ va(lue): lowercased character in the range: 0..255
+-re(lated to): nlsInfo toUpper
++re(lated to): nlsInfo supplToUpper
+ se(condary subsystems): 
+ bu(gs): 
+ co(mpilers): 
+@@ -99,7 +99,7 @@ int toFUpper(int ch)
+ 		, toupper);
+ }
+ 
+-int toUpper(int ch)
++int supplToUpper(int ch)
+ {	return toMTrans(ch, nlsInfo()->uppercaseLen, nlsInfo()->uppercaseTbl
+ 		, toupper);
+ }
+@@ -111,3 +111,4 @@ int toLower(int ch)
+ 		, tolower);
+ }
+ #endif
++

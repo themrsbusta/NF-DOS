@@ -1,0 +1,66 @@
+diff --git a/kernel/initdisk.c b/kernel/initdisk.c
+index 0ec93db..6aae87a 100644
+--- a/kernel/initdisk.c
++++ b/kernel/initdisk.c
+@@ -1184,7 +1184,8 @@ int BIOS_nrdrives(void)
+ 
+   if (regs.flags & 1)
+   {
+-    printf("no hard disks detected\n");
++    if (InitKernelConfig.Verbose >= 0)
++      printf("no hard disks detected\n");
+     return 0;
+   }
+ 
+diff --git a/kernel/kernel.asm b/kernel/kernel.asm
+index 657dfbd..fb8f7f1 100644
+--- a/kernel/kernel.asm
++++ b/kernel/kernel.asm
+@@ -66,7 +66,7 @@ configstart:
+ 
+ DLASortByDriveNo            db 0        ; sort disks by drive order
+ InitDiskShowDriveAssignment db 1        ;
+-SkipConfigSeconds           db 2        ;
++SkipConfigSeconds           db -1       ; disable the F5/F8 startup pause
+ ForceLBA                    db 0        ;
+ GlobalEnableLBAsupport      db 1        ;
+ BootHarddiskSeconds         db 0        ;
+@@ -78,7 +78,7 @@ Version_Revision            dw 43       ; REVISION_SEQ
+ Version_Release             dw 1        ; 0=release build, >0=svn#
+ 
+ CheckDebugger:	            db 0        ; 0 = no check, 1 = check, 2 = assume present
+-Verbose	                    db 0        ; -1 = quiet, 0 = normal, 1 = verbose
++Verbose	                    db -1       ; -1 = quiet, 0 = normal, 1 = verbose
+ 
+ PartitionMode				db 0x1f		; bits 0-1: 01=GPT if found, 00=MBR if found, 11=Hybrid, GPT first then MBR, 10=Hybrid, MBR first then GPT
+ 										;           in hybrid mode, EE partitions ignored, drives assigned by GPT or MBR first based on hybrid type
+diff --git a/kernel/main.c b/kernel/main.c
+index 0966cfe..1da7a89 100644
+--- a/kernel/main.c
++++ b/kernel/main.c
+@@ -436,14 +436,9 @@ STATIC VOID FsConfig(VOID)
+ 
+ STATIC VOID signon()
+ {
+-	if (InitKernelConfig.Verbose < 0) 
+-	{
+-#ifdef CUSTOM_BRANDING
+-        printf("\n" CUSTOM_BRANDING "\n\n");
+-#else
+-        printf("\n%S\n\n", MK_FP(FP_SEG(LoL), FP_OFF(LoL->os_release)));
+-#endif
+-	} else {
++	if (InitKernelConfig.Verbose < 0)
++	  return;
++
+ #ifdef CUSTOM_BRANDING
+   printf("\n" CUSTOM_BRANDING "\n\n%s", copyright);
+ #else
+@@ -478,7 +473,6 @@ STATIC VOID signon()
+          MK_FP(FP_SEG(LoL), FP_OFF(LoL->os_release)),
+          MAJOR_RELEASE, MINOR_RELEASE, copyright);
+ #endif
+-	}
+ }
+ 
+ STATIC void kernel()

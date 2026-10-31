@@ -1,0 +1,12 @@
+@echo off
+if "%1" == "" goto ?
+copy %hd%\kernel\commands\line.txt %hd%\softs\%1.bat >nul
+set atalho=%1.bat
+goto end
+
+:?
+@echo Digite o nome do atalho sem espaços e caracteres invalidos
+@echo exemplo [grandearquivo]
+goto end
+
+:end
