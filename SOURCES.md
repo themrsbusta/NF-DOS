@@ -1,13 +1,13 @@
-# Fontes e proveniência
+# Sources and provenance
 
-Snapshot preparado para NF-DOS 6.0 Beta 2 v8, com base nas revisões upstream abaixo. Os diretórios preservam os arquivos de licença e avisos rastreados por cada projeto. Saídas compiladas e diretórios `.git` aninhados foram removidos.
+Snapshot prepared for NF-DOS 6.0 Beta 2 v8, based on the upstream revisions below. Directories preserve the license and notice files tracked by each project. Compiled output and nested `.git` directories were removed.
 
-Imagem de referência omitida: NF-DOS6.0-beta2-nfsplash-v8.img (SHA-256 876CB8CB40564B03A94E68F874EBB7B64C859303212E25782AFED7DD459E7B0D). O v8 deriva do v7 e contém a correção de saída do EDIT; o hash é metadado de proveniência, não um binário publicado.
+Omitted reference image: NF-DOS6.0-beta2-nfsplash-v8.img (SHA-256 876CB8CB40564B03A94E68F874EBB7B64C859303212E25782AFED7DD459E7B0D). v8 is derived from v7 and includes the EDIT exit fix; the hash is provenance metadata, not a published binary.
 
-| Componente | Repositório | Commit de origem |
+| Component | Repository | Source commit |
 |---|---|---|
 | FreeDOS Kernel | [FDOS/kernel](https://github.com/FDOS/kernel) | `5ffb5502d39a10a30f5b8a9e8beeba0bf30245d3` |
-| Tabelas de país | [FDOS/country](https://github.com/FDOS/country) | `7f83e041d00f78b3912c761246930f3b437440f6` |
+| Country tables | [FDOS/country](https://github.com/FDOS/country) | `7f83e041d00f78b3912c761246930f3b437440f6` |
 | FreeCOM | [FDOS/freecom](https://github.com/FDOS/freecom) | `d52ba900a5e5b3ab29e0bba0735e6b8f076d2b53` |
 | FDISK | [FDOS/fdisk](https://github.com/FDOS/fdisk) | `a6e3622c959707f1950df8ca4fe94046274ee1a9` |
 | ATTRIB | [FDOS/attrib](https://github.com/FDOS/attrib) | `20e373d2fcef5e6369075debcec0fceecc9f9493` |

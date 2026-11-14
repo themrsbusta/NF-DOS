@@ -1,11 +1,11 @@
-# NFSPLASH — fonte
+# NFSPLASH — source
 
-`NFSPLASH.ASM` desenha o logo NF-DOS na página de texto VGA ativa. `generate.py` converte `reference/def-splash.png` para a rasterização embutida no programa DOS. O gerador precisa de Python 3 e NASM; a imagem `.COM` resultante é uma saída de compilação e não é versionada aqui.
+`NFSPLASH.ASM` draws the NF-DOS logo on the active VGA text page. `generate.py` converts `reference/def-splash.png` into the raster embedded in the DOS program. The generator requires Python 3 and NASM; the resulting `.COM` image is a build output and is not versioned here.
 
-Exemplo, a partir da raiz do repositório:
+Example, from the repository root:
 
 ```powershell
 python src/nfsplash/generate.py --image src/nfsplash/reference/def-splash.png --nasm nasm --output NFSPLASH.COM
 ```
 
-O código está sob MIT. O titular do projeto autorizou que a arte NF-DOS fornecida para esta publicação também seja distribuída sob MIT. Veja [LICENSE-SCOPE.md](../../LICENSE-SCOPE.md).
+The code is under MIT. The project owner also authorized distribution of the NF-DOS artwork supplied for this publication under MIT. See [LICENSE-SCOPE.md](../../LICENSE-SCOPE.md).

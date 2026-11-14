@@ -1,33 +1,33 @@
-# NF-DOS 6.0 Beta 2 — fontes
+# NF-DOS 6.0 Beta 2 — source code
 
-NF-DOS foi meu primeiro projeto próprio. Comecei em 2006, usando como base o disco de inicialização do Windows 98 SE. Em 2026, retomei o projeto para celebrar seus 20 anos, preservar a identidade do NF-DOS e substituir o núcleo por tecnologia FreeDOS.
+NF-DOS was my first original project. I started it in 2006, using the Windows 98 SE startup disk as a base. In 2026, I resumed the project to celebrate its 20th anniversary, preserve the NF-DOS identity, and replace its core with FreeDOS technology.
 
-Esta publicação contém **somente fontes, documentação, avisos de licença e a arte original usada como entrada do splash**. Não contém a imagem de disquete nem programas compilados (`.COM`, `.EXE`, `.SYS`, `.IMG` ou arquivos equivalentes).
+This publication contains **source code, documentation, license notices, and the original artwork used as input for the splash screen only**. It does not contain a floppy disk image or compiled programs (`.COM`, `.EXE`, `.SYS`, `.IMG`, or equivalent files).
 
-## O que está aqui
+## Contents
 
-- Fonte do FreeDOS Kernel 2046 e do FreeCOM, com as alterações locais usadas no Beta 2.
-- Fontes dos utilitários FreeDOS e de terceiros listados em [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), cada qual sob seus próprios termos.
-- Código Panthera para `NFSPLASH.COM` e `FINDRAMD`, scripts de inicialização/instalação e o logo-fonte `def-splash.png`.
-- Revisões upstream, alterações locais e limitações de build documentadas em [SOURCES.md](SOURCES.md), [PATCHES.md](PATCHES.md) e [BUILDING.md](BUILDING.md).
+- FreeDOS Kernel 2046 and FreeCOM source, with the local changes used in Beta 2.
+- Source for FreeDOS and third-party utilities listed in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md), each under its own terms.
+- Panthera code for `NFSPLASH.COM` and `FINDRAMD`, startup/installation scripts, and the source logo `def-splash.png`.
+- Upstream revisions, local changes, and build limitations documented in [SOURCES.md](SOURCES.md), [PATCHES.md](PATCHES.md), and [BUILDING.md](BUILDING.md).
 
-O kernel usado é o FreeDOS Kernel 2046 (v2.46), identificado pelo upstream como release de 29 de junho de 2026: [release oficial](https://github.com/FDOS/kernel/releases/tag/ke2046). O shell é FreeCOM 0.87.
+The kernel used is FreeDOS Kernel 2046 (v2.46), identified upstream as the June 29, 2026 release: [official release](https://github.com/FDOS/kernel/releases/tag/ke2046). The shell is FreeCOM 0.87.
 
-## Limites desta publicação
+## Publication limits
 
-Este é um pacote de fontes para os componentes e scripts NF-DOS identificados. **Ainda não é uma receita reproduzível, de ponta a ponta, para recriar byte a byte o disquete Beta 2.** A imagem de referência, o setor de boot histórico e os binários usados na integração foram deliberadamente omitidos. O repositório também não afirma que todo arquivo legado presente na imagem beta tenha uma origem de fonte identificada.
+This is a source package for the identified NF-DOS components and scripts. **It is not yet a fully reproducible, end-to-end recipe for recreating the Beta 2 floppy byte for byte.** The reference image, historical boot sector, and integration binaries were deliberately omitted. The repository also does not claim that the source origin of every legacy file in the beta image has been identified.
 
-O objetivo desta publicação é manter as fontes identificadas e seus avisos, sem distribuir binários. Veja os limites e dependências em [BUILDING.md](BUILDING.md).
+The goal of this publication is to keep the identified source and its notices available without distributing binaries. See [BUILDING.md](BUILDING.md) for limitations and dependencies.
 
-## Licenças
+## Licenses
 
-Os arquivos originais Panthera neste repositório são disponibilizados sob MIT, nos limites definidos em [LICENSE-SCOPE.md](LICENSE-SCOPE.md). **MIT não substitui nem relicencia código de terceiros.** Para componentes externos, valem os avisos e licenças preservados em cada diretório de `third_party/` e descritos em [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
+Original Panthera files in this repository are provided under MIT within the scope defined in [LICENSE-SCOPE.md](LICENSE-SCOPE.md). **MIT does not replace or relicense third-party code.** External components remain subject to the notices and licenses preserved in each `third_party/` directory and described in [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md).
 
-## Pastas
+## Directories
 
-- `src/boot/` — scripts e configuração NF-DOS.
-- `src/findramd/`, `src/nfsplash/` — código original Panthera.
-- `third_party/` — snapshots de fontes upstream, sem o histórico Git aninhado e sem saídas compiladas.
-- `patches/` — alterações locais em componentes de terceiros; permanecem sob as licenças upstream aplicáveis.
+- `src/boot/` — NF-DOS startup scripts and configuration.
+- `src/findramd/`, `src/nfsplash/` — original Panthera code.
+- `third_party/` — upstream source snapshots, without nested Git history or compiled output.
+- `patches/` — local changes to third-party components; they remain under the applicable upstream licenses.
 
-Contribuições e correções são bem-vindas. Antes de incluir novos componentes, preserve a licença original e registre a revisão de origem.
+Contributions and fixes are welcome. Before adding components, preserve the original license and record the source revision.

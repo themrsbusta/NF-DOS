@@ -3,7 +3,7 @@ cls
 @echo NF-DOS installer
 @echo.
 IF "%1" == "" goto ?
-@echo copying NF-DOS in %1\, press Ctrl+C to cancel or enter to continue
+@echo copying NF-DOS to %1\, press Ctrl+C to cancel or Enter to continue
 pause 
 @echo starting copy
 copy \ %1\ >nul
@@ -41,8 +41,8 @@ del %1\2autoe.bat >nul
 goto end
 
 :?
-@echo Para iniciar a instalação digite a unidade.
-@echo Exemplo: [install unidade:]
+@echo To start installation, enter the drive letter.
+@echo Example: [install drive:]
 goto end
 
 :end

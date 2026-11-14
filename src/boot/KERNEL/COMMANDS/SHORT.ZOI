@@ -5,8 +5,8 @@ set atalho=%1.bat
 goto end
 
 :?
-@echo Digite o nome do atalho sem espaços e caracteres invalidos
-@echo exemplo [grandearquivo]
+@echo Enter a shortcut name without spaces or invalid characters.
+@echo Example: [longfilename]
 goto end
 
 :end

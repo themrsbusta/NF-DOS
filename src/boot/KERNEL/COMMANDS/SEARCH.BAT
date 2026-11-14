@@ -8,13 +8,13 @@ dir/s/w/p/o %1
 goto end
 
 :?
-@echo digite o nome do arquivo a localizar com unidade e extensao
+@echo Enter the file name to search for, including drive and extension.
 @echo.
-@echo exemplo [UNIDADE:\ARQUIVO.EXTENSAO]
+@echo Example: [DRIVE:\FILE.EXTENSION]
 @echo.  
-@echo quando o que nao souber, complete com *
+@echo If you do not know part of the name, replace it with *.
 @echo.
-@echo exemplo [UNIDADE:\*IVO.EXTE*AO]
+@echo Example: [DRIVE:\*ILE.EXT*ION]
 goto end
 
 :END

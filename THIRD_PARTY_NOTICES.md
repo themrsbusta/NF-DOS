@@ -1,25 +1,25 @@
-# Avisos de terceiros
+# Third-party notices
 
-A licença raiz MIT cobre somente o material Panthera listado em `LICENSE-SCOPE.md`. Os códigos e avisos de terceiros mantêm os termos próprios; não são relicenciados pela Panthera.
+The root MIT license covers only the Panthera material listed in `LICENSE-SCOPE.md`. Third-party code and notices retain their own terms; they are not relicensed by Panthera.
 
-| Componente | Licença/aviso preservado | Observação |
+| Component | Preserved license/notice | Notes |
 |---|---|---|
-| FreeDOS Kernel e country tables | GPL-2.0-or-later e avisos incluídos nas próprias fontes (`COPYING`, arquivos do subprojeto) | As alterações locais também permanecem sob os termos upstream. |
-| FreeCOM | GPL-2.0, arquivo `license` e avisos auxiliares | O patch de renomeação de símbolo é alteração derivada e permanece GPL. |
-| FDISK, ATTRIB, CHKDSK, EDIT, FORMAT e SYS | Licenças GPL e avisos por componente; confira `LICENSE`, `COPYING` ou `copying` nos respectivos diretórios | O CHKDSK contém subdiretórios com avisos adicionais; todos os arquivos de licença rastreados foram mantidos. |
-| FDAPM | GPL-2.0-or-later, `disclaim.txt` | Fonte Assembly. |
-| HIMEMX | As mudanças do projeto HIMEMX são declaradas domínio público; a base FDHimem mantém direitos/termos GPL e/ou Artistic, conforme `Readme.txt` | Aviso misto: não tratar todo o fonte como MIT ou domínio público. |
-| BITDISK | O cabeçalho de `BITDISK.ASM` declara freeware/domínio público e preserva autoria/contribuições | O snapshot da árvore `FDOS/ramdisk` também contém outros componentes e avisos próprios; o Beta 2 usa BITDISK. |
-| CuteMouse | GPL-2.0, `copying` | O Beta 2 usou um executável de pacote oficial; a correspondência binário-fonte exata não foi confirmada. Este repositório não inclui esse executável. |
-| SHSUCDX | Licença permissiva customizada “as-is”, `LICENSE.txt` | Mantém atribuição, aviso e condições próprias. |
-| DEBUG | Aviso permissivo customizado e contribuições em domínio público, conforme fontes/README | Clone de comando compatível; não é código-fonte Microsoft. |
-| ZIP e UnZip | Licenças customizadas Info-ZIP, `LICENSE` e avisos associados | Preservadas junto às fontes. |
+| FreeDOS Kernel and country tables | GPL-2.0-or-later and notices included with the sources (`COPYING`, subproject files) | Local changes also remain under the upstream terms. |
+| FreeCOM | GPL-2.0, `license` file, and auxiliary notices | The symbol-renaming patch is a derivative change and remains GPL. |
+| FDISK, ATTRIB, CHKDSK, EDIT, FORMAT, and SYS | GPL licenses and component notices; see `LICENSE`, `COPYING`, or `copying` in the respective directories | CHKDSK contains subdirectories with additional notices; all tracked license files were retained. |
+| FDAPM | GPL-2.0-or-later, `disclaim.txt` | Assembly source. |
+| HIMEMX | HIMEMX project changes are declared public domain; the FDHimem base retains GPL and/or Artistic rights/terms, as stated in `Readme.txt` | Mixed notice: do not treat all source as MIT or public domain. |
+| BITDISK | `BITDISK.ASM` header declares freeware/public domain and preserves authorship/contributions | The `FDOS/ramdisk` tree snapshot also contains other components and their own notices; Beta 2 uses BITDISK. |
+| CuteMouse | GPL-2.0, `copying` | Beta 2 used an executable from an official package; the exact source-to-binary match was not confirmed. This repository does not include that executable. |
+| SHSUCDX | Custom permissive “as-is” license, `LICENSE.txt` | Its own attribution, notice, and conditions remain in effect. |
+| DEBUG | Custom permissive notice and public-domain contributions, as stated in the source/README | Compatible command clone; not Microsoft source code. |
+| ZIP and UnZip | Custom Info-ZIP licenses, `LICENSE`, and associated notices | Preserved alongside the source. |
 
-## Ferramentas de build e validação (não incluídas)
+## Build and validation tools (not included)
 
-- [Open Watcom](https://github.com/open-watcom/open-watcom-v2) — Sybase Open Watcom Public License 1.0. Nenhum executável do toolchain é distribuído aqui; antes de publicar executáveis construídos com ele, revisar as obrigações da licença e do runtime.
+- [Open Watcom](https://github.com/open-watcom/open-watcom-v2) — Sybase Open Watcom Public License 1.0. No toolchain executable is distributed here; review the license and runtime obligations before publishing executables built with it.
 - [NASM](https://github.com/netwide-assembler/nasm) — BSD-2-Clause.
-- [JWasm](https://github.com/JWasm/JWasm) — consulte o `License.txt` da revisão usada, baseado na Sybase Open Watcom Public License 1.0.
-- [QEMU](https://www.qemu.org/docs/master/about/license.html) — GPL-2.0, com partes sob avisos específicos; usado para validação e não distribuído aqui.
+- [JWasm](https://github.com/JWasm/JWasm) — see the `License.txt` for the revision used, based on the Sybase Open Watcom Public License 1.0.
+- [QEMU](https://www.qemu.org/docs/master/about/license.html) — GPL-2.0, with some parts under specific notices; used for validation and not distributed here.
 
-Esta tabela é um índice, não substitui os avisos integrais nos diretórios de origem. Em caso de diferença, prevalecem os arquivos de licença aplicáveis ao componente.
+This table is an index and does not replace the full notices in the source directories. If anything differs, the license files applicable to the component take precedence.
