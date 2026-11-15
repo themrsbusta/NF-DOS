@@ -4,7 +4,7 @@ Revisão técnica de avisos e proveniência, 2026-11-15. Isto não é parecer ju
 
 ## Escopo auditado
 
-A imagem local de referência revisada é `NF-DOS-6.0/NF-DOS6.0-v22.img` (SHA-256 `089E2535225C417615EF9FF6DDC6FC8288B06F25FD11846B1ABC3E61931DFEFD`, 1.474.560 bytes). Ela preserva os avisos em `LICENSES/`, o texto integral de GPL-2 em `LICENSES/GPL-2.TXT` e `KERNEL/COPYING.TXT`, e `NFAPPS.ZIP`, que contém executáveis e scripts de terceiros. Em relação à v21, somente `AUTOEXEC.BAT` e `NFAPPS.ZIP` mudaram; kernel, FreeCOM, NFSPLASH e payload NFLLM permaneceram iguais. A imagem não está incluída neste repositório source-only.
+Uma imagem local da edição Floppy do NF-DOS 6.0 foi revisada quanto aos avisos e à correspondência das fontes. A imagem não está incluída neste repositório source-only. Ela preserva os avisos em `LICENSES/`, o texto integral de GPL-2 em `LICENSES/GPL-2.TXT` e `KERNEL/COPYING.TXT`, e `NFAPPS.ZIP`, que contém executáveis e scripts de terceiros.
 
 `NFAPPS.ZIP` contém ATTRIB, CABEXT, CHKDSK.BAT, CTMOUSE, CWSDPMI, DBLSPACE.BAT, DEBUG, DOSFSCK, DRVSPACE.BAT, EDIT, EXT.BAT, EXTRACT.BAT, FDAPM, FORMAT, HELP.BAT, MSCDEX.BAT, NFHELP.TXT, RESTART.BAT, SCANDISK.BAT, SHSUCDX e SYS. A imagem também contém o kernel, FreeCOM, FDISK, FINDRAMD, ZIP/UNZIP, ATAPICDD, BITDISK, HIMEMX e NFSPLASH.
 
@@ -39,7 +39,7 @@ Também permanece pendente concluir a análise do runtime/saída produzido com O
 
 - O texto integral da GPLv2 está incluído no disquete. Os avisos de GPLv3, Info-ZIP, MIT, permissões adicionais e outros componentes também permanecem separados por componente.
 - O índice interno foi corrigido para apontar ao aviso MIT do código em `NFSPLASH.TXT`, na raiz da imagem, e agora identifica `FINDRAMD.EXE` como GPL-2.0-or-later com o aviso `FINDRAMD.TXT`. Os avisos da arte dizem em primeira pessoa que eu criei o logo, que a Panthera Softwares é minha empresa e titular dos direitos, e que autorizo seu uso em nome dela no NF-DOS 6.0. A autorização continua limitada à arte original.
-- A imagem v22 inicializou no QEMU, mostrou `NF-DOS 6.0` e a linha de aniversário, e chegou ao prompt `A:\>` sem o rótulo `[FreeDOS Kernel 2046]`. `HELP` mostrou a ajuda atualizada, `EDIT` abriu e fechou normalmente, e a matriz NFLLM terminou com 31/31 casos aprovados, sem falhas; QEMU saiu com código 0. As evidências estão em `NF-DOS-6.0/stability/NF-DOS5.02-vs-6.0-NFLLM-20261114/`.
+- A imagem de avaliação do NF-DOS 6.0 inicializou no QEMU, mostrou `NF-DOS 6.0` e a linha de aniversário, e chegou ao prompt `A:\>` sem o rótulo `[FreeDOS Kernel 2046]`. `HELP` mostrou a ajuda atualizada, `EDIT` abriu e fechou normalmente, e a matriz NFLLM terminou com 31/31 casos aprovados, sem falhas; QEMU saiu com código 0. As evidências estão em `NF-DOS-6.0/stability/NF-DOS5.02-vs-6.0-NFLLM-20261114/`.
 - Alterar a tela de inicialização para mostrar somente `NF-DOS 6.0` não altera licença, copyright nem atribuição. As identificações e avisos técnicos permanecem na documentação e nos arquivos de licença.
 
 ## Referências upstream
@@ -49,3 +49,15 @@ Também permanece pendente concluir a análise do runtime/saída produzido com O
 - [FreeDOS package catalog](https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/repositories/latest/html/en/)
 - [Info-ZIP license](https://infozip.sourceforge.net/license.html)
 - [Open Watcom license](https://github.com/open-watcom/open-watcom-v2/blob/master/license.txt)
+
+## Reavaliação final da distribuição binária — 2026-11-15
+
+A auditoria paralela da Mica foi concluída para a edição Floppy do NF-DOS 6.0. A conclusão permanece **UNRESOLVED** para a distribuição binária: a correspondência exata entre fonte, patches, instruções de build e cada um dos 21 executáveis inventariados ainda não está demonstrada. O resultado técnico de instalação e boot no QEMU não resolve essa pendência documental.
+
+Os avisos revisados estão presentes na imagem, mas isso, por si só, não comprova a proveniência de cada binário. A identidade do pacote DOSFSCK e do executável CWSDPMI continua sem correspondência confirmada com os registros locais; a origem exata do CuteMouse e o efeito do runtime/saída do Open Watcom sob a OWPL também permanecem **UNRESOLVED**. A documentação oficial do catálogo FreeDOS identifica DOSFSCK 2.11d e CWSDPMI 7a como GPL-2, com hashes de pacote publicados, mas os hashes locais registrados não correspondem a esses registros. [DOSFSCK](https://ibiblio.org/pub/micro/pc-stuff/freedos/files/repositories/latest/html/en/disk/dosfsck/20250409.8/index.html), [CWSDPMI](https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/repositories/1.4/html/en/tools/cwsdpmi/20250318.2/index.html), [licença Open Watcom](https://github.com/open-watcom/open-watcom-v2/blob/master/license.txt).
+
+**Recomendação atual: BLOQUEADO para distribuir a imagem binária.** Não há evidência suficiente para classificar esses itens como não conformes, mas também não há base para declarar a redistribuição liberada. Este relatório é uma verificação documental de engenharia, não um parecer jurídico. A futura CD Edition não foi tratada como artefato distribuível e precisará de auditoria própria quando houver um manifesto.
+
+Na validação técnica limitada concluída nesta data, a instalação em destino descartável de 500 MiB, o boot do C: sem disquete, o prompt, DIR/VER, NFTEST SELFTEST e uma inferência NFLLM de um token passaram. A imagem candidata não mudou. Permanecem os limites operacionais descritos acima, incluindo FORMAT no BITDISK RAMDisk e cobertura apenas parcial dos utilitários. Evidências e o relatório YAML estão em `NF-DOS-6.0/stability/NF-DOS5.02-vs-6.0-NFLLM-20261114/`.
+
+O nome e a versão do produto são **NF-DOS 6.0** / **6.0**. Este repositório contém fontes e documentação; não inclui imagem de disquete nem programas compilados. O envio ao repositório contém somente fontes e documentação; não inclui imagem, binários, tag ou Release.

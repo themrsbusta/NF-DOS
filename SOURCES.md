@@ -1,8 +1,6 @@
 # Sources and provenance
 
-This repository includes a historical source snapshot prepared for NF-DOS 6.0 Beta 2 v8. The product is now NF-DOS 6.0. Directories preserve the license and notice files tracked by each project. Compiled output and nested `.git` directories were removed.
-
-Omitted reference image: NF-DOS6.0-beta2-nfsplash-v8.img (SHA-256 876CB8CB40564B03A94E68F874EBB7B64C859303212E25782AFED7DD459E7B0D). v8 is derived from v7 and includes the EDIT exit fix; the hash is provenance metadata, not a published binary.
+This repository includes source snapshots and documented patches used for NF-DOS 6.0. Directories preserve the license and notice files tracked by each project. Disk images, compiled output, and nested `.git` directories are not included.
 
 | Component | Repository | Source commit |
 |---|---|---|
@@ -29,7 +27,7 @@ Omitted reference image: NF-DOS6.0-beta2-nfsplash-v8.img (SHA-256 876CB8CB40564B
 | CWSDPMI 7a | [FreeDOS package catalog](https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/repositories/latest/html/en/tools/cwsdpmi/) | Package source snapshot `2025-03-18.2`; no Git commit recorded |
 | FINDRAMD.EXE in the image | Panthera source `sources/nfdos-findramd/FINDRAMD.C`, GPL-2.0-or-later | `third_party/nfdos-findramd-gpl/`, including `build-findramd-historical.ps1` |
 
-The kernel and FreeCOM snapshots include the source edits in `patches/`. EDIT contains the five adapted source files used for v8. The exact component license and exceptions are summarized in `THIRD_PARTY_NOTICES.md` and preserved in the respective source directories.
+The kernel and FreeCOM snapshots include the source edits in `patches/`. EDIT contains the five adapted source files listed in `PATCHES.md`. The exact component license and exceptions are summarized in `THIRD_PARTY_NOTICES.md` and preserved in the respective source directories.
 
 The added CABExtract, DOSFSCK, CWSDPMI, and ATAPICDD snapshots in `third_party/` contain source and notices only; compiled `BIN/` trees and packaged ZIP files were excluded. Hash and size differences between the local DOSFSCK/CWSDPMI archives and the FreeDOS catalog remain unresolved, so the snapshots do not prove exact correspondence to the binaries in `NFAPPS.ZIP`.
 

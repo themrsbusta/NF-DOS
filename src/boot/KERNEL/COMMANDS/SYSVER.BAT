@@ -2,7 +2,7 @@
 if "%1" == "" goto see
 
 :setting
-set sysver=6.0 BETA 2 [FreeDOS Kernel 2046]
+set sysver=6.0
 set edition=FULL EDITION
 set name=NF-DOS
 set produtor=PANTHERA SOFTWARES
