@@ -1,6 +1,6 @@
 schema_version: 1
 project:
-  name: "NF-DOS 6.0 — publicação de fontes"
+  name: "NF-DOS 6.0"
   organization: Panthera Softwares
   purpose: "Publicar fontes identificadas, patches, instruções de build e avisos de licença do NF-DOS."
 contents:
@@ -17,3 +17,8 @@ limits:
   - "Não é uma receita completa para recriar byte a byte a imagem NF-DOS 6.0; boot sector histórico e binários de integração foram omitidos."
   - "A procedência de todos os arquivos legados da imagem não está estabelecida."
   - "MIT cobre os arquivos originais Panthera nos limites de LICENSE-SCOPE.md e não relicencia componentes terceiros."
+reference_image:
+  file: "NF-DOS6.0-v22.img"
+  size_bytes: 1474560
+  sha256: "089E2535225C417615EF9FF6DDC6FC8288B06F25FD11846B1ABC3E61931DFEFD"
+  note: "Imagem de teste local; imagens e binários não são publicados neste repositório."

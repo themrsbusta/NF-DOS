@@ -1,5 +1,6 @@
 @ECHO OFF
 set TZ=UTC0
+set HD=C:
 call \Kernel\Commands\sysver.bat setting
 set DIRCMD=/O:N
 set LglDrv=27 * 26 Z 25 Y 24 X 23 W 22 V 21 U 20 T 19 S 18 R 17 Q 16 P 15
@@ -14,8 +15,16 @@ copy kernel\app %RAMD%:\app >nul
 copy kernel\commands %RAMD%:\commands >nul
 copy command.com %RAMD%:\ > NUL
 set comspec=%RAMD%:\command.com
+if exist A:\NFAPPS.ZIP goto APPS_FLOPPY
+if exist %HD%\NFAPPS.ZIP goto APPS_HDD
+goto APPS_FLOPPY
+:APPS_HDD
+\Kernel\App\UNZIP.EXE -o -qq %HD%\NFAPPS.ZIP -d %RAMD%:\ > NUL
+goto APPS_READY
+:APPS_FLOPPY
 \Kernel\App\UNZIP.EXE -o -qq A:\NFAPPS.ZIP -d %RAMD%:\ > NUL
-path=%RAMD%:\;%RAMD%:\commands;%RAMD%:\app
+:APPS_READY
+path=%RAMD%:\;%RAMD%:\commands;%RAMD%:\app;%HD%\COMMANDS;C:\NFLLM
 LH %RAMD%:\APP\CTMOUSE.EXE >NUL
 CALL MSCDEX /D:mscd001 /L:%CDROM% >NUL
 call \kernel\Startup\vis.bat 2

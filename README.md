@@ -1,4 +1,4 @@
-# NF-DOS 6.0 — source code
+# NF-DOS 6.0
 
 NF-DOS was my first project of my own. I started it in 2006, using the Windows 98 SE startup disk as a base. In 2026, I resumed it to celebrate its 20th anniversary, preserve the NF-DOS identity, and replace its core with FreeDOS technology. The product is NF-DOS 6.0.
 

@@ -1,0 +1,16 @@
+NF-DOS 6.0 - AJUDA
+
+CHKDSK /?       Verificacao FAT basica.
+DOSFSCK -n A:   Verifica sem gravar alteracoes.
+DOSFSCK -r A:   Reparo interativo; confirme cada alteracao.
+CABEXT ARQ.CAB  Extrai arquivos de um gabinete CAB.
+EXT ARQ.CAB     Alias de compatibilidade para CABEXT.
+EXTRACT ARQ.CAB Alias de compatibilidade para CABEXT.
+MSCDEX ...      Alias para o driver SHSUCDX.
+SCANDISK A:     Alias para DOSFSCK em reparo interativo.
+DRVSPACE/DBLSPACE Sem unidade comprimida transparente; use ZIP por arquivo.
+ZIP / UNZIP     Compactacao e extracao de arquivos.
+RESTART         Reinicia o computador.
+
+ZIP nao cria unidade comprimida transparente como DriveSpace.
+DOSFSCK -a repara automaticamente; use com cuidado.

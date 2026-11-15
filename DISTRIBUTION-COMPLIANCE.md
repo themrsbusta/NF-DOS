@@ -4,7 +4,7 @@ Revisão técnica de avisos e proveniência, 2026-11-15. Isto não é parecer ju
 
 ## Escopo auditado
 
-A imagem candidata revisada é `NF-DOS-6.0/NF-DOS6.0-v21.img` (SHA-256 `EB387DA81E17D1F5D75BEC0C7CCD323EC5EBB82A5657C106306EA4BDF112FFBC`, 1.474.560 bytes). Ela contém avisos em `LICENSES/`, o texto integral de GPL-2 em `LICENSES/GPL-2.TXT` e `KERNEL/COPYING.TXT`, e `NFAPPS.ZIP`, que distribui executáveis e scripts de terceiros. A v21 foi inicializada no QEMU até `A:\>`; a captura PPM é byte-a-byte idêntica à captura validada da v20 e os logs estão em `NF-DOS-6.0/stability/NF-DOS5.02-vs-6.0-NFLLM-20261114/`.
+A imagem local de referência revisada é `NF-DOS-6.0/NF-DOS6.0-v22.img` (SHA-256 `089E2535225C417615EF9FF6DDC6FC8288B06F25FD11846B1ABC3E61931DFEFD`, 1.474.560 bytes). Ela preserva os avisos em `LICENSES/`, o texto integral de GPL-2 em `LICENSES/GPL-2.TXT` e `KERNEL/COPYING.TXT`, e `NFAPPS.ZIP`, que contém executáveis e scripts de terceiros. Em relação à v21, somente `AUTOEXEC.BAT` e `NFAPPS.ZIP` mudaram; kernel, FreeCOM, NFSPLASH e payload NFLLM permaneceram iguais. A imagem não está incluída neste repositório source-only.
 
 `NFAPPS.ZIP` contém ATTRIB, CABEXT, CHKDSK.BAT, CTMOUSE, CWSDPMI, DBLSPACE.BAT, DEBUG, DOSFSCK, DRVSPACE.BAT, EDIT, EXT.BAT, EXTRACT.BAT, FDAPM, FORMAT, HELP.BAT, MSCDEX.BAT, NFHELP.TXT, RESTART.BAT, SCANDISK.BAT, SHSUCDX e SYS. A imagem também contém o kernel, FreeCOM, FDISK, FINDRAMD, ZIP/UNZIP, ATAPICDD, BITDISK, HIMEMX e NFSPLASH.
 
@@ -39,7 +39,7 @@ Também permanece pendente concluir a análise do runtime/saída produzido com O
 
 - O texto integral da GPLv2 está incluído no disquete. Os avisos de GPLv3, Info-ZIP, MIT, permissões adicionais e outros componentes também permanecem separados por componente.
 - O índice interno foi corrigido para apontar ao aviso MIT do código em `NFSPLASH.TXT`, na raiz da imagem, e agora identifica `FINDRAMD.EXE` como GPL-2.0-or-later com o aviso `FINDRAMD.TXT`. Os avisos da arte dizem em primeira pessoa que eu criei o logo, que a Panthera Softwares é minha empresa e titular dos direitos, e que autorizo seu uso em nome dela no NF-DOS 6.0. A autorização continua limitada à arte original.
-- A imagem v21 inicializou no QEMU, mostrou `NF-DOS 6.0` e a linha de aniversário, e chegou ao prompt `A:\>` sem o rótulo `[FreeDOS Kernel 2046]`. A VM saiu normalmente (QEMU exit code 0; captura SHA-256 `80403E931C959E8FC8A8434E945651E2F21D2EFF4315B96AD9B94CE95630BCEB` idêntica à da v20; kernel, NFLLM e programas não foram alterados).
+- A imagem v22 inicializou no QEMU, mostrou `NF-DOS 6.0` e a linha de aniversário, e chegou ao prompt `A:\>` sem o rótulo `[FreeDOS Kernel 2046]`. `HELP` mostrou a ajuda atualizada, `EDIT` abriu e fechou normalmente, e a matriz NFLLM terminou com 31/31 casos aprovados, sem falhas; QEMU saiu com código 0. As evidências estão em `NF-DOS-6.0/stability/NF-DOS5.02-vs-6.0-NFLLM-20261114/`.
 - Alterar a tela de inicialização para mostrar somente `NF-DOS 6.0` não altera licença, copyright nem atribuição. As identificações e avisos técnicos permanecem na documentação e nos arquivos de licença.
 
 ## Referências upstream

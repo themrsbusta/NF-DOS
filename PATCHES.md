@@ -1,6 +1,6 @@
 # Local changes
 
-The changes listed below are part of Beta 2 and remain under the upstream components' licenses. Textual patches are alongside this file.
+The changes below were developed during the historical Beta 2 work and are part of NF-DOS 6.0. They remain under the upstream components' licenses. Textual patches are alongside this file.
 
 - **FreeDOS Kernel 2046** (`patches/freedos-kernel-nfdos.patch`): silent boot-banner configuration, removal of the F5/F8 pause, and suppression of the no-hard-disk message.
 - **FreeCOM 0.87** (`patches/freecom-nfdos.patch`): renames `toUpper` to `supplToUpper` at collision points. This avoids unintended recursion and the memory corruption that appeared as `E_NoMem`.
