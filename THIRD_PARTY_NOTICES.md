@@ -1,6 +1,6 @@
 # Third-party notices
 
-The root MIT license covers only the Panthera material listed in `LICENSE-SCOPE.md`. I, Busta, created the original logo. Panthera Softwares is my company and holds the rights to the artwork; Panthera authorizes its use and redistribution as part of NF-DOS 6.0. This authorization is separate from the MIT license for NFSPLASH code. Third-party code and notices retain their own terms; they are not relicensed by Panthera.
+The root MIT license covers only the Panthera material listed in `LICENSE-SCOPE.md`. I created the original logo. Panthera Softwares is my company and holds the artwork rights; as its owner, I authorize use and redistribution of the logo on Panthera's behalf as part of NF-DOS 6.0. This authorization is separate from the MIT license for NFSPLASH code. Third-party code and notices retain their own terms; they are not relicensed by Panthera.
 
 | Component | Preserved license/notice | Notes |
 |---|---|---|

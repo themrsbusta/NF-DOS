@@ -2,7 +2,7 @@
 
 NF-DOS was my first project of my own. I started it in 2006, using the Windows 98 SE startup disk as a base. In 2026, I resumed it to celebrate its 20th anniversary, preserve the NF-DOS identity, and replace its core with FreeDOS technology. The product is NF-DOS 6.0.
 
-This publication contains **source code, documentation, license notices, and the original artwork used as input for the splash screen only**. It does not contain a floppy disk image or compiled programs (`.COM`, `.EXE`, `.SYS`, `.IMG`, or equivalent files). I, Busta, created the original NF-DOS logo. Panthera Softwares is my company and holds the rights to the artwork; Panthera authorizes its use and redistribution as part of NF-DOS 6.0. See [LICENSE-SCOPE.md](LICENSE-SCOPE.md) for the limited scope of that authorization.
+This publication contains **source code, documentation, license notices, and the original artwork used as input for the splash screen only**. It does not contain a floppy disk image or compiled programs (`.COM`, `.EXE`, `.SYS`, `.IMG`, or equivalent files). I created the original NF-DOS logo. Panthera Softwares is my company and holds the artwork rights; as its owner, I authorize use and redistribution of the logo on Panthera's behalf as part of NF-DOS 6.0. See [LICENSE-SCOPE.md](LICENSE-SCOPE.md) for the limited scope of that authorization.
 
 ## Contents
 

@@ -4,7 +4,7 @@ Revisão técnica de avisos e proveniência, 2026-11-15. Isto não é parecer ju
 
 ## Escopo auditado
 
-A imagem candidata revisada é `NF-DOS-6.0/NF-DOS6.0-v20.img` (SHA-256 `FC7282CAD74FBA0F2851C0F11151B12DD1D686AB68EBA21F1C10161BC1488FF6`, 1.474.560 bytes). Ela contém avisos em `LICENSES/`, o texto integral de GPL-2 em `LICENSES/GPL-2.TXT` e `KERNEL/COPYING.TXT`, e `NFAPPS.ZIP`, que distribui executáveis e scripts de terceiros. O v20 foi inicializado no QEMU até `A:\>`; a captura PPM é idêntica à do v19 e os logs estão em `NF-DOS-6.0/stability/NF-DOS5.02-vs-6.0-NFLLM-20261114/`.
+A imagem candidata revisada é `NF-DOS-6.0/NF-DOS6.0-v21.img` (SHA-256 `EB387DA81E17D1F5D75BEC0C7CCD323EC5EBB82A5657C106306EA4BDF112FFBC`, 1.474.560 bytes). Ela contém avisos em `LICENSES/`, o texto integral de GPL-2 em `LICENSES/GPL-2.TXT` e `KERNEL/COPYING.TXT`, e `NFAPPS.ZIP`, que distribui executáveis e scripts de terceiros. A v21 foi inicializada no QEMU até `A:\>`; a captura PPM é byte-a-byte idêntica à captura validada da v20 e os logs estão em `NF-DOS-6.0/stability/NF-DOS5.02-vs-6.0-NFLLM-20261114/`.
 
 `NFAPPS.ZIP` contém ATTRIB, CABEXT, CHKDSK.BAT, CTMOUSE, CWSDPMI, DBLSPACE.BAT, DEBUG, DOSFSCK, DRVSPACE.BAT, EDIT, EXT.BAT, EXTRACT.BAT, FDAPM, FORMAT, HELP.BAT, MSCDEX.BAT, NFHELP.TXT, RESTART.BAT, SCANDISK.BAT, SHSUCDX e SYS. A imagem também contém o kernel, FreeCOM, FDISK, FINDRAMD, ZIP/UNZIP, ATAPICDD, BITDISK, HIMEMX e NFSPLASH.
 
@@ -23,7 +23,7 @@ A imagem candidata revisada é `NF-DOS-6.0/NF-DOS6.0-v20.img` (SHA-256 `FC7282CA
 | ZIP e UnZip | Licenças próprias Info-ZIP | `third_party/zip/`, `third_party/unzip/` e avisos integrais na imagem |
 | SHSUCDX, DEBUG, BITDISK, ATAPICDD, HIMEMX | Avisos próprios/mistos; preservar textos e atribuições upstream | diretórios correspondentes em `third_party/` e `THIRD_PARTY_NOTICES.md` |
 | NFSPLASH.COM | MIT para o código | `src/nfsplash/`; não licencia a arte |
-| Logo original `def-splash.png` | Eu, Busta, criei a arte. A Panthera Softwares é minha empresa e titular dos direitos sobre ela; a Panthera autoriza uso e redistribuição como parte do NF-DOS 6.0 | autorização limitada em `LICENSE-SCOPE.md`; hash conferido no relatório de auditoria |
+| Logo original `def-splash.png` | Eu criei a arte. A Panthera Softwares é minha empresa e titular dos direitos; como proprietário, autorizo seu uso e redistribuição em nome da Panthera no NF-DOS 6.0 | autorização limitada em `LICENSE-SCOPE.md`; hash conferido no relatório de auditoria |
 
 Os quatro snapshots CABExtract, DOSFSCK, CWSDPMI e ATAPICDD foram acrescentados a `third_party/` sem diretórios `BIN/` nem arquivos compilados. A fonte GPL do FINDRAMD usado pela imagem também foi publicada em `third_party/nfdos-findramd-gpl/`; `src/findramd/` é uma cópia MIT separada que eu, Busta, autorizo sob esse termo. A fonte do FreeCOM e seu patch permanecem identificados. O aviso MIT do NFSPLASH não se estende ao logo; a autorização do logo não se estende a outros ativos históricos.
 
@@ -38,8 +38,8 @@ Também permanece pendente concluir a análise do runtime/saída produzido com O
 ## Avisos já verificados
 
 - O texto integral da GPLv2 está incluído no disquete. Os avisos de GPLv3, Info-ZIP, MIT, permissões adicionais e outros componentes também permanecem separados por componente.
-- O índice interno foi corrigido para apontar ao aviso MIT do código em `NFSPLASH.TXT`, na raiz da imagem, e agora identifica `FINDRAMD.EXE` como GPL-2.0-or-later com o aviso `FINDRAMD.TXT`. Os avisos da arte dizem claramente que eu, Busta, criei o logo e que a Panthera Softwares, minha empresa, detém os direitos sobre a arte e autoriza seu uso no NF-DOS 6.0. Essa autorização continua limitada à arte original.
-- A imagem v20 inicializou no QEMU, mostrou `NF-DOS 6.0` e a linha de aniversário, e chegou ao prompt `A:\>` sem o rótulo `[FreeDOS Kernel 2046]`. A VM saiu normalmente (QEMU exit code 0); kernel, NFLLM e programas não foram alterados.
+- O índice interno foi corrigido para apontar ao aviso MIT do código em `NFSPLASH.TXT`, na raiz da imagem, e agora identifica `FINDRAMD.EXE` como GPL-2.0-or-later com o aviso `FINDRAMD.TXT`. Os avisos da arte dizem em primeira pessoa que eu criei o logo, que a Panthera Softwares é minha empresa e titular dos direitos, e que autorizo seu uso em nome dela no NF-DOS 6.0. A autorização continua limitada à arte original.
+- A imagem v21 inicializou no QEMU, mostrou `NF-DOS 6.0` e a linha de aniversário, e chegou ao prompt `A:\>` sem o rótulo `[FreeDOS Kernel 2046]`. A VM saiu normalmente (QEMU exit code 0; captura SHA-256 `80403E931C959E8FC8A8434E945651E2F21D2EFF4315B96AD9B94CE95630BCEB` idêntica à da v20; kernel, NFLLM e programas não foram alterados).
 - Alterar a tela de inicialização para mostrar somente `NF-DOS 6.0` não altera licença, copyright nem atribuição. As identificações e avisos técnicos permanecem na documentação e nos arquivos de licença.
 
 ## Referências upstream
