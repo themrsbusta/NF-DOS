@@ -8,4 +8,4 @@ Example, from the repository root:
 python src/nfsplash/generate.py --image src/nfsplash/reference/def-splash.png --nasm nasm --output NFSPLASH.COM
 ```
 
-The code is under MIT. The project owner also authorized distribution of the NF-DOS artwork supplied for this publication under MIT. See [LICENSE-SCOPE.md](../../LICENSE-SCOPE.md).
+The code is under MIT. The artwork is a separate work and is not covered by that license. I, Busta, created the original NF-DOS logo. Panthera Softwares is my company and holds the rights to the artwork; Panthera authorizes its use and redistribution as part of NF-DOS 6.0. See [LICENSE-SCOPE.md](../../LICENSE-SCOPE.md) for the scope of that authorization.

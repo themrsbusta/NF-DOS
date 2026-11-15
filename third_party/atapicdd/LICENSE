@@ -1,0 +1,9 @@
+ATAPICDD - ATAPI CD Driver for DOS
+Written by Kenneth J. Davis <jeremyd@computer.org>, 2001-2003
+Released to public domain  [ U.S. Definition ]
+
+ATAPI code based on public domain C code from Hale Landis' ATADRVR
+
+Use at own risk, author assumes no liability nor responsibility
+for use, misuse, lack of use, or anything else as a result
+of this program.  No warranty or other implied nor given.

@@ -1,0 +1,19 @@
+Begin3
+Title:          DOSFSCK
+Version:        2.11d
+Entered-Date:   2012-01-08
+Description:    Check the consistency of file system
+Summary:        Checks the consistency of DOS file systems and attempts to
+                repair any errors
+Keywords:       scandisk,chkdsk
+Author:         Werner Almesberger, Roman Hodek
+Maintained-By:  Eric Auer
+Primary-Site:   http://ericauer.cosmodata.virtuaserver.com.br/soft/by-others/
+Alternate-Site: http://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/dos/chkdsk/dosfsck/
+Platforms:      DOS
+Copying-Policy: GNU General Public License, Version 2
+Modified-Date:  2025-04-09.8
+Changes:        * NLS: English typo corrections and Swedish translation
+                update|* Metadata updated for modified-date and LFN
+                requirements|* improved repository INDEX.md
+End

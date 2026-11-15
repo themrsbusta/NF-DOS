@@ -1,0 +1,19 @@
+schema_version: 1
+project:
+  name: "NF-DOS 6.0 — publicação de fontes"
+  organization: Panthera Softwares
+  purpose: "Publicar fontes identificadas, patches, instruções de build e avisos de licença do NF-DOS."
+contents:
+  source:
+    - "FreeDOS Kernel 2046 e FreeCOM 0.87 com alterações locais documentadas."
+    - "Fontes identificadas de utilitários FreeDOS e componentes de terceiros em third_party/."
+    - "Código Panthera NFSPLASH.COM, FINDRAMD e scripts/configuração em src/."
+documentation: ["BUILDING.md", "SOURCES.md", "PATCHES.md", "LICENSE-SCOPE.md", "THIRD_PARTY_NOTICES.md", "DISTRIBUTION-COMPLIANCE.md", "PROJECT-OVERVIEW.yaml"]
+build:
+  guidance: "Siga BUILDING.md; preserve as licenças upstream e aplique os patches documentados."
+  tools: ["OpenWatcom", "JWasm", "NASM"]
+limits:
+  - "O pacote contém somente fontes, documentação, avisos e arte original de entrada; não distribui a imagem nem programas compilados."
+  - "Não é uma receita completa para recriar byte a byte a imagem NF-DOS 6.0; boot sector histórico e binários de integração foram omitidos."
+  - "A procedência de todos os arquivos legados da imagem não está estabelecida."
+  - "MIT cobre os arquivos originais Panthera nos limites de LICENSE-SCOPE.md e não relicencia componentes terceiros."

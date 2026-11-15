@@ -1,6 +1,6 @@
 # Sources and provenance
 
-Snapshot prepared for NF-DOS 6.0 Beta 2 v8, based on the upstream revisions below. Directories preserve the license and notice files tracked by each project. Compiled output and nested `.git` directories were removed.
+This repository includes a historical source snapshot prepared for NF-DOS 6.0 Beta 2 v8. The product is now NF-DOS 6.0. Directories preserve the license and notice files tracked by each project. Compiled output and nested `.git` directories were removed.
 
 Omitted reference image: NF-DOS6.0-beta2-nfsplash-v8.img (SHA-256 876CB8CB40564B03A94E68F874EBB7B64C859303212E25782AFED7DD459E7B0D). v8 is derived from v7 and includes the EDIT exit fix; the hash is provenance metadata, not a published binary.
 
@@ -23,7 +23,16 @@ Omitted reference image: NF-DOS6.0-beta2-nfsplash-v8.img (SHA-256 876CB8CB40564B
 | SHSUCDX | [adoxa/shsucd](https://github.com/adoxa/shsucd) | `ad7f92020f3d026fe658864578481f9bbb953181` |
 | ZIP | [cysin/info-zip](https://github.com/cysin/info-zip) | `b4b2ab3c5ae0dce0a7c3884f364ad1fd15854d90` |
 | UnZip | [madler/unzip](https://github.com/madler/unzip) | `0b82c20ac7375b522215b567174f370be89a4b12` |
+| CABExtract 1.11+1 | [FreeDOS/cabext](https://gitlab.com/FreeDOS/archiver/cabext), upstream reference [dajhorn/libmspack](https://github.com/dajhorn/libmspack), package `2025-03-16.0` | `51b1ea8b329945c4c1756c41abdfe26487a6b2f2` |
+| ATAPICDD 0.2.14 | [FreeDOS/atapicdd](https://gitlab.com/FreeDOS/drivers/atapicdd), package `2025-04-10.0` | `bbb748e82d5b4b5885a65f0c2372a9c622d1de2b` |
+| DOSFSCK 2.11d | [FreeDOS package catalog](https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/repositories/latest/html/en/disk/dosfsck/) | Package source snapshot `2025-04-09.8`; no Git commit recorded |
+| CWSDPMI 7a | [FreeDOS package catalog](https://www.ibiblio.org/pub/micro/pc-stuff/freedos/files/repositories/latest/html/en/tools/cwsdpmi/) | Package source snapshot `2025-03-18.2`; no Git commit recorded |
+| FINDRAMD.EXE in the image | Panthera source `sources/nfdos-findramd/FINDRAMD.C`, GPL-2.0-or-later | `third_party/nfdos-findramd-gpl/`, including `build-findramd-historical.ps1` |
 
 The kernel and FreeCOM snapshots include the source edits in `patches/`. EDIT contains the five adapted source files used for v8. The exact component license and exceptions are summarized in `THIRD_PARTY_NOTICES.md` and preserved in the respective source directories.
 
+The added CABExtract, DOSFSCK, CWSDPMI, and ATAPICDD snapshots in `third_party/` contain source and notices only; compiled `BIN/` trees and packaged ZIP files were excluded. Hash and size differences between the local DOSFSCK/CWSDPMI archives and the FreeDOS catalog remain unresolved, so the snapshots do not prove exact correspondence to the binaries in `NFAPPS.ZIP`.
+
 NF-DOS-authored startup files are under `src/boot/`. `FINDRAMD.C` and NFSPLASH sources are under `src/`. No image, executable, driver, object file, archive, or compiler output is part of this tree. See `BUILDING.md` for the reproducibility boundary.
+
+`src/findramd/` is a separate MIT-licensed Panthera copy. The floppy image's FINDRAMD.EXE was built from the GPL-2.0-or-later source in `third_party/nfdos-findramd-gpl/`; keep those grants separate.

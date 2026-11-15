@@ -1,0 +1,118 @@
+ATAPICDD - ATAPI CD Driver for DOS
+Written by Kenneth J. Davis <jeremyd@computer.org>, 2001-2003
+Released to public domain  [ U.S. Definition ]
+
+Current version is 0.2.0 ALPHA
+Version # = major.minor.developement (0 for dev == released version)
+
+ATAPI code based on public domain C code from Hale Landis' ATADRVR
+
+Use at own risk, author assumes no liability nor responsibility
+for use, misuse, lack of use, or anything else as a result
+of this program.  No warranty or other implied nor given.
+
+While use and distribution (even by commercial entities) is
+encouraged, I (KJD) will not assume any responsibility for this
+driver's use.  Should your local laws not permit this disclaimer,
+or would otherwise still allow me to be held responsible, then you
+may not use this driver.  Other persons or entities may provide
+a warranty or other if so desired and stated or implied by
+method of recieving this driver; I am not affiliated with them.
+
+Please send bug reports to me so that they may hopefully be fixed.
+If possible please include your contact information (email address)
+so I may ask you further details or to verify it as fixed.
+Fixes will be supplied as my time permits.
+
+USAGE:
+Load device driver from CONFIG.SYS (or dynamic device loader such as DEVLOAD)
+device=[drive][path]ATAPICDD.SYS <options>
+
+device=        standard method of loading a device in CONFIG.SYS
+[drive][path]  drive and/or path to device driver file
+ATAPICDD.SYS   the driver itself, if renamed use appropriate filename
+<options>      supported command line options, /D, /N, /K, and /C
+  Options are processed left to right, with rightmost one overriding any before it
+  invalid options will be silently ignored (and may screw up rest of processing)
+  Only /D and /N are specified by CDEX document, the remaining are extensions
+  and subject to change in future revisions (to avoid conflicts with existing practice)
+  /D:<name>
+    - will set the device name field (DOS device) to <name>
+    - default is 'FDCD0000'
+    - if <name> is less than 8 characters then space ' ' padded on right to 8 bytes
+    - if <name> is more than 8 characters, the rest are ignored
+  /N:#
+    - specifies to look for # devices
+    - default is 1 (as per spec)
+    - maximum value is 8 (up to MAX_CONTROLLERS*2 are supported), higher values are ok
+    - a value of 0 indicates search for maximum devices
+    - # is a single HEX digit, remaining characters are ignored
+  /K:#
+    - specifies to ignore controller #
+    - # is the index into the controller table, which normally refers to IDE 0,1,2,3
+    - # is a single HEX digit, remaining characters are ignored
+    - if # refers to a value < 0 or >= MAX_CONTROLLERS it is ignored
+  /C:#,<baseIO>   [ TODO ]
+    - overrides default value of base I/O address of controller #
+    - # see /K for description of # (controller index)
+    - , is required separator, as future revisions may expand # to larger than nibble
+    - <baseIO> is HEX base I/O port address, e.g. 1F0
+    - Default locations to look for ATA/ATAPI devices:
+        controller(#)    baseI/Oaddress
+        primary   (0)    0x1F0
+        secondary (1)    0x170
+        tertiary  (2)    0x1E8
+        quaternary(3)    0x168
+  /I   [ reserved for future change interrupt # ]
+
+
+EXAMPLES:
+Load driver with all default values, look on all 4 standard controller locations
+for devices, stop search after finding 1 device, and use device name of FDCD0000
+device=ATAPICDD.SYS
+
+Load driver but only check 2 primary controller locations
+device=ATAPICDD.SYS /K:2 /K:3
+
+Load driver specifying device name of ATAPICDD and search for all
+available (and supported) devices
+device=ATAPICDD.SYS /D:ATAPICDD /N:0
+
+Load driver looking for 2 devices, but one of the devices is on the
+primary controller and the other is on a secondary controller with a different
+base I/O port address of 0xABC (note: we can use 1,2,or 3 as # to /C
+since there is no device on any of them, but using 1 prevents unnecessary searching)
+device=ATAPICDD.SYS /C:1,ABC /N:2
+
+Load driver but search on secondary controller before primary
+device=ATAPICDD.SYS /C:0,170 /C:1,1F0
+
+Load driver with options that result in default behaviour, notice how rightmost
+option overrides earlier one
+device=ATAPICDD.SYS /C:0,170 /C:0,1F0
+
+Load driver, explicitly setting same options as default
+device=ATAPICDD.SYS /D:FDCD0000 /N:1 /C:0,1F0 /C:1,170 /C2:1E8 /C3:168
+
+
+NOTES:
+This is an early release, not intended for public distribution.
+It may contain debug or experimental code.  Note the link specified
+below is intended to be the permanent home (i.e. where you can
+link and tell others to find it).
+
+Requires at least a 80186, though only tested on a 486 and higher.
+Presently only works in PIO mode, though future work will add
+DMA modes.  Also only implements minimal functions necessary for
+data transfers.  Future releases will add audio play/stop support.
+Should support up to 8 drives, but primarily tested with only
+1 CD-ROM drive and occasionally on a system with 2 CD-ROM drives.
+Personally works for me on a 486/CD-ROM, 586/DVD-ROM, and a
+PentiumII/DVD-ROM system.
+
+
+Latest version of driver may be found at:
+http://www.darklogic.org/fdos/projects/atapicdd/
+
+This document also public domain.
+20030621
