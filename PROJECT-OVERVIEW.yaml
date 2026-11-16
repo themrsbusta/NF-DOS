@@ -21,3 +21,14 @@ publication:
   product_version: "6.0"
   included_artifacts: "Fontes, documentação, avisos de licença e arte original de entrada."
   omitted_artifacts: ["Imagens de disquete", "Programas compilados"]
+validation:
+  date: "2026-11-16"
+  emulator: "QEMU 11.1"
+  regression: >-
+    77 checks passed. One automated CALL/BAT check was marked failed because the
+    expected text comparison was case-sensitive; the captured output shows the
+    batch ran and printed its expected result. All 31 NFLLM model/backend cases
+    passed, and EDIT opened, closed, and returned to the DOS prompt.
+  image_sha256: "53C7345445F70B71D93F2094CAE406BF5E79E4B1AE042C94551B6DE6C9B18C62"
+  binary_distribution: "Blocked pending remaining source/build and Open Watcom runtime review."
+  github_release: "Not created."
