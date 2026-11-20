@@ -1,0 +1,163 @@
+;*******************************************************************************
+;
+;  ATAPICDD - ATAPI CD Driver for DOS
+;  Written by Kenneth J. Davis <jeremyd@computer.org>, 2001-2003
+;  Released to public domain  [ U.S. Definition ]
+;
+;  ATAPI code based on public domain C code from Hale Landis' ATADRVR
+;
+;  Use at own risk, author assumes no liability nor responsibility
+;  for use, misuse, lack of use, or anything else as a result
+;  of this program.  No warranty or other implied nor given.
+;
+;  Please send bug reports to me so that they may hopefully be fixed.
+;  If possible please include your contact information (email address)
+;  so I may ask you further details or to verify it as fixed.
+;  Fixes will be supplied as my time permits.
+;
+   %define ReleaseStr     'v0.2.14 ALPHA'
+   %define DRIVERVERSION  0,2,14
+;  Version # = major.minor.developement (0 for dev == released version)
+;
+;  Still to do, add support for optional commands to play/stop/resume audio
+;  Also add support for buffering/prefetching to enhance performance and
+;  support for direct control strings to be sent to CD
+;  Future, enhance for DVD and/or CD/DVD writers
+;  WARNING not re-entrant! presently relies on global data & own single stack,
+;  i.e. it must complete the current IOCTL request before receiving another one
+;
+;*******************************************************************************
+
+; use -t and -O5 on nasm command line to 
+; enable @@ local symbols and jump optimization
+
+
+; Enable or disable various parts of driver (assemble time options)
+; Recommend for a minimal functioning driver should have
+; one of OPT_ATAPI or OPT_SCSI (both only if you actually have both)
+; only enable OPT_AUDIO and OPT_READ* to play audio CDs or extracting data
+; only enable OPT_WRITE for CD-Writers and you want support through the CDEX
+; only enable OPT_8020ONLY for older drives to save memory; reduced functionality
+; enable OPT_UPC, OPT_RESET, OPT_DRVINFO if you have an application that uses it
+; OPT_DRVCTRL may generally remain enabled (for eject/lock/etc)
+; OPT_DIRECTCTRL is optional, but should be enabled for CD Writers & public releases
+; OPT_8086 should only be enabled if you need to support 8086s, default requires
+;          186 for rep insw/rep outsw which are replaced by slower in/out loops
+IFDEF MINBUILD
+%define OPT_DEBUG      ; enable DEBUG support (actual debugging output still must be enabled)
+%define OPT_ATAPI      ; support ATA based ATAPI devices
+%define OPT_SCSI       ; support ASPI based SCSI devices
+%define OPT_AUDIO      ; support 'optional for basic usage' audio driver calls
+%define OPT_READRAW    ; support raw read driver calls (assuming CD drive supports it)
+%define OPT_READMSF    ; support msf read driver calls (assuming CD drive supports it)
+%define OPT_WRITE      ; support optional cd writer driver calls
+;%define OPT_8020ONLY  ; limit packets to those within the obsolete INF-8020i document
+%define OPT_UPC        ; support get UPC call
+%define OPT_RESET      ; support reset call
+%define OPT_DRVCTRL    ; support useful drive control operations, e.g. open/close tray, ...
+%define OPT_DRVINFO    ; support possibly useful drive information operations
+%define OPT_DIRECTCTRL ; enable limited device & driver control via external programs
+;%define OPT_8086      ; enable 8086 compatible build
+
+; maximum number of subunits we can handle
+; (defaults are 2 for min build and 10 otherwise)
+; 8 is maximum when using the 4 standard ATA controller base
+; I/O address (2 devices, master/slave, per controller)
+; also include extra for any additional SCSI based CD drives
+; This is a somewhat arbitrary limit, effects disk size and max used RAM
+; not runtime memory (which is determined by actual # devices found,
+; other than setting maximum that can possibly be used/devices supported)
+MAX_DEVICES EQU 10
+
+ELSE   ;MINBUILD
+%define OPT_ATAPI
+MAX_DEVICES EQU 2
+ENDIF  ;predefined build setups
+
+
+%define ? 0
+
+%define proc
+%define near
+%define far
+%define endp
+
+%define OFFSET
+%define ptr
+
+%define AND &
+%define OR  |
+%define NOT ~
+
+%define .8086 CPU 8086
+%define .186 CPU 186
+CPU 8086
+
+; TASM will automatically expands shr/l reg, count if needed but NASM won't
+%macro shr 2
+     times %2 shr %1, 1
+%endmacro
+%macro shl 2
+     times %2 shl %1, 1
+%endmacro
+
+; to handle segment override syntax differences between NASM & TASM
+; NASM uses:    mov byte ptr [segovr:reg], val    (where ptr is replaced by emptry string via %define ptr)
+; TASM uses:    mov byte ptr segovr:[reg], val
+; instead of explicit mov byte call, use movb ptr [segovr:,reg], val	e.g. movb ptr [ES:,DI], -1
+%macro movb 3
+     mov byte %1 %2, %3				; e.g. mov byte [ES:DI], -1
+%endmacro
+%macro movw 3
+     mov word %1 %2, %3				; e.g. mov word [ES:DI], -1
+%endmacro
+%macro cmpw 3
+     cmp word %1 %2, %3				; e.g. cmp word [ES:DI], -1
+%endmacro
+%macro mov2 3
+      mov %1, %2 %3				; e.g. mov AL, [CS:BX]
+%endmacro
+%macro callw 2
+      call word %1 %2                     ; e.g. call word ptr [CS:DI]
+%endmacro
+%macro testb 3
+	test byte %1 %2, %3                 ; e.g. test byte [SS:BP+2], STATUS_NEA
+%endmacro
+
+
+segment .code
+use16
+
+INCLUDE "devhdr.inc"      ; DOS device driver header + CD-ROM extension, & global data
+INCLUDE "debug.inc"       ; debugging related functions, such as DEBUG_PrintMsg
+INCLUDE "devstrat.inc"    ; DOS device driver interrupt and strategy routines
+INCLUDE "devdata.inc"
+INCLUDE "ioPktInt.inc"    ; generic interface to peform packet commands
+INCLUDE "ioATA.inc"       ; command functions for ATA controller / ATAPI devices
+INCLUDE "ioATArst.inc"
+INCLUDE "ioATApkt.inc"
+INCLUDE "ioASPI.inc"      ; command functions for ASPI access to SCSI devices
+INCLUDE "ioASPIrst.inc"
+INCLUDE "ioASPIpkt.inc"
+INCLUDE "cdb.inc"
+INCLUDE "cdbevnot.inc"
+INCLUDE "cdbident.inc"
+INCLUDE "cdblock.inc"
+INCLUDE "cdbread.inc"
+INCLUDE "cdbsense.inc"
+INCLUDE "cdbsrtsp.inc"
+INCLUDE "cdbtsrdy.inc"
+INCLUDE "data.inc"        ; data related IOCTLs implementation
+INCLUDE "dirctrl.inc"
+INCLUDE "drvctrl.inc"
+INCLUDE "drvinfo.inc"
+INCLUDE "audio.inc"       ; audio related IOCTLs implementation
+INCLUDE "stack.inc"       ; marks end of resident code and has reserved stack + data space
+INCLUDE "initATA.inc"     ; initialization functions for ATA/ATAPI devices
+INCLUDE "initASPI.inc"    ; initialization functions for ASPI access to SCSI devices
+INCLUDE "initcmdl.inc"
+INCLUDE "initmsg.inc"
+INCLUDE "init.inc"        ; device driver init, including cmd line parsing and device init
+
+
+;*******************************************************************************

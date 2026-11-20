@@ -1,24 +1,27 @@
 # NF-DOS 6.0
 
-NF-DOS 6.0 is the final product release and the public product name.
+NF-DOS (New Frontiers DOS) began in 2006 and was revived for its twentieth anniversary in 2026. NF-DOS 6.0 uses FreeDOS Kernel 2046 and FreeCOM 0.87, with Panthera utilities, startup scripts and a CD edition containing additional applications.
 
-## Downloads
+Developed by Panthera Softwares, a division of Panthera Research.
 
-The GitHub Release provides the bootable images and the identified source archive:
+## Download NF-DOS 6.0
 
-- [Bootable CD image](https://github.com/themrsbusta/NF-DOS/releases/download/v6.0/NF-DOS6.0.iso)
+- [Bootable CD ISO](https://github.com/themrsbusta/NF-DOS/releases/download/v6.0/NF-DOS6.0.iso)
 - [1.44 MB floppy image](https://github.com/themrsbusta/NF-DOS/releases/download/v6.0/NF-DOS6.0.img)
-- [Source archive](https://github.com/themrsbusta/NF-DOS/releases/download/v6.0/NF-DOS-6.0-source.zip)
-- [SHA-256 checksums](https://github.com/themrsbusta/NF-DOS/releases/download/v6.0/SHA256SUMS.txt)
+- [Release checksums](https://github.com/themrsbusta/NF-DOS/releases/download/v6.0/SHA256SUMS.txt)
+- [Release v6.0](https://github.com/themrsbusta/NF-DOS/releases/tag/v6.0)
 
-The source archive is also stored at `SOURCE/NF-DOS-6.0-source.zip`. Its scope and checksum are documented in `DOCS/NF-DOS_60_Release.yaml` and `DOCS/SHA256SUMS.txt`. Download the two image assets into `RELEASES/` before checking all package hashes.
+## Source code
 
-## Validation and scope
+- `src/` — NF-DOS startup configuration, FINDRAMD and NFSPLASH.
+- `third_party/` — identified kernel, shell, tools and upstream source snapshots.
+- `patches/` — local modifications to upstream components.
+- `DOCS/` — historical release package records.
 
-The release handoff records that the ISO booted in QEMU 11.1 to the NF-DOS 6.0 splash screen and DOS prompt. The `.IMG` and `.ISO` files are distributed as release assets rather than Git blobs.
+See [BUILDING.md](BUILDING.md), [SOURCES.md](SOURCES.md) and [PATCHES.md](PATCHES.md) for build information.
 
-The source archive contains identified source, patches, documentation, and notices. It is not a complete corresponding-source package for every application on the ISO, and it is not a byte-for-byte reproducible build recipe. The ISO has not received the same detailed technical audit as the floppy image. `DISTRIBUTION-COMPLIANCE.md` lists the unresolved source-to-binary, Open Watcom, and third-party redistribution questions. The publication of these files does not state that those questions have been cleared.
+The identified core sources are available directly in this branch. The published v6.0 source archive is a historical package; it is not a complete build kit for every program on the CD. Missing source/build correspondence and distribution review items are recorded in [DISTRIBUTION-COMPLIANCE.md](DISTRIBUTION-COMPLIANCE.md).
 
-## Licensing
+## License
 
-The MIT license covers only the Panthera-authored material identified in `LICENSE-SCOPE.md`. Third-party components retain their own licenses and notices. The source archive preserves those terms and attribution.
+Panthera Research licenses its original material under MIT as specified in [LICENSE-SCOPE.md](LICENSE-SCOPE.md). Third-party components retain their original licenses and credits; see [THIRD_PARTY_NOTICES.md](THIRD_PARTY_NOTICES.md). The historical release images and release tag are unchanged.

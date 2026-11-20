@@ -1,0 +1,2 @@
+CWSDPMI 7a, Copyright Charles W. Sandmann. GNU GPL version 2;
+the upstream binary redistribution notice is in DOC/COPYING.CWS.

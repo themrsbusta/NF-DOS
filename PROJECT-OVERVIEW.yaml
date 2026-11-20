@@ -1,36 +1,22 @@
 schema_version: 1
 project:
-  name: "NF-DOS 6.0"
-  organization: Panthera Research
-  software_division: Panthera Softwares
-  purpose: "Publicar o NF-DOS 6.0 final com imagens de lançamento, pacote de fontes identificadas e avisos de licença."
-contents:
-  source:
-    - "FreeDOS Kernel 2046 e FreeCOM 0.87 com alterações locais documentadas."
-    - "Fontes identificadas de utilitários FreeDOS e componentes de terceiros em third_party/."
-    - "Código Panthera NFSPLASH.COM, FINDRAMD e scripts/configuração em src/."
-documentation: ["BUILDING.md", "SOURCES.md", "PATCHES.md", "LICENSE-SCOPE.md", "THIRD_PARTY_NOTICES.md", "DISTRIBUTION-COMPLIANCE.md", "PROJECT-OVERVIEW.yaml"]
-build:
-  guidance: "Siga BUILDING.md; preserve as licenças upstream e aplique os patches documentados."
-  tools: ["OpenWatcom", "JWasm", "NASM"]
-limits:
-  - "Este arquivo ZIP contém somente fontes, documentação, avisos e arte original de entrada; as imagens e programas compilados são ativos separados do Release."
-  - "Não é uma receita completa para recriar byte a byte a imagem NF-DOS 6.0; boot sector histórico e binários de integração foram omitidos."
-  - "A procedência de todos os arquivos legados da imagem não está estabelecida."
-  - "MIT cobre os arquivos originais Panthera nos limites de LICENSE-SCOPE.md e não relicencia componentes terceiros."
-publication:
-  product_name: "NF-DOS 6.0"
-  included_in_source_archive: "Fontes, documentação, avisos de licença e arte original de entrada."
-  omitted_from_source_archive: ["Imagens de disquete", "Programas compilados"]
-  release_assets: ["NF-DOS6.0.img", "NF-DOS6.0.iso"]
-validation:
-  date: "2026-11-16"
-  emulator: "QEMU 11.1"
-  regression: >-
-    77 checks passed. One automated CALL/BAT check was marked failed because the
-    expected text comparison was case-sensitive; the captured output shows the
-    batch ran and printed its expected result. All 31 NFLLM model/backend cases
-    passed, and EDIT opened, closed, and returned to the DOS prompt.
-  image_sha256: "53C7345445F70B71D93F2094CAE406BF5E79E4B1AE042C94551B6DE6C9B18C62"
-  binary_distribution: "Published in the NF-DOS 6.0 GitHub Release at the owner's direction; source/build correspondence and Open Watcom runtime review remain unresolved. Publication does not mean those audit items are cleared."
-  github_release: "https://github.com/themrsbusta/NF-DOS/releases/tag/v6.0"
+  name: NF-DOS 6.0
+  company: Panthera Research
+  division: Panthera Softwares
+  release: v6.0
+  status: Final public release
+source:
+  core: src/
+  upstream: third_party/
+  patches: patches/
+  coverage: Partial; see DISTRIBUTION-COMPLIANCE.md
+  reproducible_end_to_end: false
+release:
+  url: https://github.com/themrsbusta/NF-DOS/releases/tag/v6.0
+  images:
+    - NF-DOS6.0.iso
+    - NF-DOS6.0.img
+  historical_manifest: DOCS/NF-DOS_60_Release.yaml
+licensing:
+  panthera: MIT within LICENSE-SCOPE.md
+  third_party: Original component licenses
