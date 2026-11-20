@@ -1,0 +1,68 @@
+schema_version: 1
+project:
+  name: "NF-DOS 6.0"
+  public_name: "NF-DOS 6.0"
+  status: "Final public release"
+  published_on: "2026-11-20"
+
+repository:
+  platform: "GitHub"
+  full_name: "themrsbusta/NF-DOS"
+  url: "https://github.com/themrsbusta/NF-DOS"
+  visibility: "public"
+  default_branch: "nf-dos-6.0"
+  release_tag: "v6.0"
+  release_title: "NF-DOS 6.0"
+  release_url: "https://github.com/themrsbusta/NF-DOS/releases/tag/v6.0"
+
+source_package:
+  file: "SOURCE/NF-DOS-6.0-source.zip"
+  bytes: 6975662
+  sha256: "0371de6c1ae679f87ab73fba8cac066a793d97333f9238abaf122e3d5a256b8f"
+  entries: 2696
+  zip_crc: "PASS"
+  scope: "Identified NF-DOS kernel, shell, utilities, scripts, notices and documentation"
+  limits:
+    - "The source archive is not a complete source package for every application in the ISO."
+    - "It is not a byte-for-byte reproducible recipe for rebuilding every image and legacy component."
+
+release_assets:
+  - file: "RELEASES/NF-DOS6.0.img"
+    type: "1.44 MB FAT12 floppy image"
+    bytes: 1474560
+    sha256: "53c7345445f70b71d93f2094cae406bf5e79e4b1ae042c94551b6de6c9b18c62"
+  - file: "RELEASES/NF-DOS6.0.iso"
+    type: "Bootable CD ISO"
+    bytes: 620990464
+    sha256: "375d7dc3ea3c744fd06ff79d9a9ca46294a8e948c23922d10befdcfebe87e2c9"
+    boot_validation: "QEMU 11.1.0 reached the NF-DOS 6.0 splash screen and DOS prompt."
+
+checksums:
+  file: "DOCS/SHA256SUMS.txt"
+  covers:
+    - "SOURCE/NF-DOS-6.0-source.zip"
+    - "RELEASES/NF-DOS6.0.img"
+    - "RELEASES/NF-DOS6.0.iso"
+    - "DOCS/NF-DOS_60_Release.yaml"
+
+licensing_and_publication:
+  public_binary_distribution: "Published at the owner's direction; unresolved audit items remain and publication is not a claim of legal clearance."
+  known_open_items:
+    - "Redistribution rights for the Stories260K TinyStories GGUF remain unresolved."
+    - "Redistribution rights for both MCUNet VWW TFLite model files remain unresolved."
+    - "Open Watcom runtime licensing review and source-to-binary correspondence are incomplete."
+    - "The source archive does not contain source for every application on the ISO."
+  included_notices: "Component license files and notices are retained in the source archive and release images."
+  artwork: "The original NF-DOS logo was created by Busta; Panthera Research holds the artwork rights. The logo authorization is separate from NFSPLASH.COM code licensing."
+
+release_layout:
+  git_branch: "nf-dos-6.0"
+  git_default_branch: true
+  release_assets:
+    - "NF-DOS6.0.img"
+    - "NF-DOS6.0.iso"
+    - "NF-DOS-6.0-source.zip"
+    - "SHA256SUMS.txt"
+    - "NF-DOS_60_Release.yaml"
+    - "DISTRIBUTION-COMPLIANCE.md"
+  images_in_git_history: false
