@@ -29,7 +29,7 @@ Os snapshots CABExtract, DOSFSCK, CWSDPMI, ATAPICDD e SRDISK foram acrescentados
 
 ## Correspondência de fontes e condição de distribuição
 
-Este arquivo de fontes não contém a imagem nem programas compilados; eles são distribuídos separadamente como ativos do Release público. Uma verificação completa da imagem requer associar cada executável ao conjunto exato de fontes, patches, arquivos de interface e instruções de build/instalação aplicáveis. A presença de fontes relacionadas não prova, por si só, que elas correspondam ao executável entregue.
+Este arquivo de fontes não contém a imagem completa do NF-DOS nem os aplicativos compilados do projeto; esses ativos são distribuídos separadamente no Release público. Ele inclui os binários upstream UIDE.SYS e UDVD2.SYS somente dentro dos pacotes oficiais completos, junto com suas fontes, documentação e avisos. Uma verificação completa da imagem requer associar cada executável ao conjunto exato de fontes, patches, arquivos de interface e instruções de build/instalação aplicáveis. A presença de fontes relacionadas não prova, por si só, que elas correspondam ao executável entregue.
 
 GPLv2 seção 3 prevê formas específicas para distribuir código-objeto, inclusive acompanhar o binário com o código-fonte correspondente completo ou usar uma das formas de oferta escrita descritas no texto. A mera presença de um repositório com fontes relacionadas não comprova, por si só, que o conjunto completo corresponda aos executáveis entregues. Até resolver a correspondência e a disponibilidade do conjunto completo, esta publicação **não declara a imagem liberada para redistribuição pública**. Consulte o texto integral em `LICENSES/GPL-2.TXT` e a [GPLv2 da FSF](https://www.gnu.org/licenses/old-licenses/gpl-2.0.en.html).
 
@@ -86,7 +86,7 @@ A imagem contém **23 arquivos executáveis ou drivers** nessa auditoria: 11 em 
 
 ### Decisão de distribuição
 
-- **Arquivo de fontes identificado: APTO para distribuição como fontes e documentação.** Este ZIP contém código-fonte, avisos e arte autorizada, sem imagem ou programas compilados.
+- **Arquivo de fontes identificado: APTO para distribuição como fontes e documentação.** Este ZIP contém código-fonte, avisos e arte autorizada, sem a imagem completa do NF-DOS nem os aplicativos compilados do projeto. Ele também contém os pacotes oficiais completos UIDE/UDVD2, que incluem os respectivos binários upstream junto com fonte, documentação e avisos.
 - **Revisão técnica da redistribuição binária: INCOMPLETA.** A revisão não conseguiu confirmar a correspondência fonte, patch e build de todos os executáveis, nem concluir a avaliação das obrigações Open Watcom Public License 1.0 aplicáveis ao `FORMAT.EXE` e aos componentes runtime. Os arquivos OWPL exigem preservar avisos e cumprir condições de disponibilização e licença do código coberto; a documentação oficial da [OWPL 1.0](https://open-watcom.github.io/open-watcom-v2-wikidocs/c_readme.html) define essas condições. Não se concluiu que haja infração, mas também não há base para afirmar que a revisão da imagem completa esteja concluída.
 
 Este relatório é uma verificação documental de engenharia, não um parecer jurídico. A imagem ISO deste lançamento não foi auditada. O nome e a versão publicados são **NF-DOS 6.0** / **6.0**; nenhum rótulo de candidata interna é usado neste repositório.
@@ -108,3 +108,21 @@ Este relatório é uma verificação documental de engenharia, não um parecer j
 O proprietário orientou a publicação pública do NF-DOS 6.0. O GitHub Release `v6.0` distribui a imagem `.img`, a ISO inicializável e o arquivo ZIP de fontes. A publicação segue identificada exclusivamente como **NF-DOS 6.0**.
 
 Essa decisão de publicação não altera as conclusões técnicas acima nem declara a redistribuição integralmente liberada. A auditoria detalhada cobre a imagem de disquete; a ISO incluída no lançamento não foi auditada. Permanecem sem resolução a correspondência completa entre alguns binários e suas fontes/instruções, a revisão das obrigações Open Watcom e os direitos de redistribuição dos modelos TinyStories e MCUNet listados no pacote de lançamento. Não há infração comprovada; há itens pendentes que impedem afirmar que a revisão técnica/jurídica está concluída.
+
+
+## Atualização dos ativos do Release — 2026-11-20
+
+Os ativos `NF-DOS6.0.img` e `NF-DOS6.0.iso` foram atualizados a partir dos arquivos entregues na pasta `update`. Os drivers `UIDE.SYS` e `UDVD2.SYS` da imagem correspondem byte a byte aos binários dos pacotes oficiais FreeDOS UIDE `2020-07-07a` e UDVD2 `2022-12-12`. A imagem ISO contém o mesmo disquete atualizado como `NF-DOS 6.0 Boot/BOOT.IMG`.
+
+| Arquivo | SHA-256 |
+|---|---|
+| `NF-DOS6.0.img` | `6A6E80534F07AA86C621F40696DCD11D83A7236AE013371BBF76BF8F9E41618B` |
+| `NF-DOS6.0.iso` | `BF247F1C0BB256FF5169844D307E33D9B6AE3837AD5C2FEC43199DB94112B420` |
+| `UIDE.SYS` | `D340BFB3544C150B2D4938B1B4B75F78F58E1B95B91E2E7DB3A03131B2EA01ED` |
+| `UDVD2.SYS` | `748A22D72E4245EB176BA6F6DD264A2BA571634D320FFF19297791D5D1A57B5E` |
+
+Os pacotes oficiais completos, com fontes, binários, documentação e avisos upstream, acompanham o arquivo de fontes em `packages/uide.zip` e `packages/udvd2.zip`. UIDE tem 57.170 bytes e SHA-1 `B3DBDCC5118E19AD1474BBA09768F33797186F58`; UDVD2 tem 35.734 bytes e SHA-1 `C7AED9F82327AACB5D5ADBA8BF3A7EFB21B623A0`. A comparação confirma identidade com o pacote upstream, não compilação independente.
+
+O rótulo do disquete e os nomes de diretório e títulos de produto no ISO foram atualizados para **Panthera Works 1.0**, conforme a instrução do proprietário. Avisos e datas de copyright de terceiros foram mantidos. Os nomes públicos e de download permanecem `NF-DOS 6.0`, `NF-DOS6.0.img` e `NF-DOS6.0.iso`; os hashes documentam os novos bytes.
+
+QEMU 8.2.2 iniciou ambas as imagens até a tela NF-DOS 6.0 e o prompt `A:\>`. O arquivo FAT12 passou na verificação de integridade, e o ISO foi relido com o catálogo El Torito e o boot image presentes. Esta verificação confirma inicialização e integridade do pacote, não substitui uma auditoria técnica integral do conteúdo ISO nem resolve os itens abertos já listados.

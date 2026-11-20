@@ -7,7 +7,7 @@ goto %1
 @echo.
 @echo.
 @echo NF-DOS 6.0
-@echo PANTHERA SOFTWARES - 20th Anniversary - 2006-2026
+@echo PANTHERA WORKS 1.0
 goto end
 
 :2
@@ -15,6 +15,6 @@ goto end
 @echo.
 @echo.
 @echo NF-DOS 6.0
-@echo PANTHERA SOFTWARES - 20th Anniversary - 2006-2026
+@echo PANTHERA WORKS 1.0
 
 :end

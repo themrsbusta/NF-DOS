@@ -16,7 +16,14 @@ release:
   images:
     - NF-DOS6.0.iso
     - NF-DOS6.0.img
-  historical_manifest: DOCS/NF-DOS_60_Release.yaml
+  manifest: DOCS/NF-DOS_60_Release.yaml
+  asset_refresh:
+    date: "2026-11-20"
+    public_filenames_unchanged: true
+    floppy_sha256: "6a6e80534f07aa86c621f40696dcd11d83a7236ae013371bbf76bf8f9e41618b"
+    iso_sha256: "bf247f1c0bb256ff5169844d307e33d9b6ae3837ad5c2fec43199db94112b420"
+    validation: "QEMU 8.2.2 reached the NF-DOS 6.0 screen and A:\\> from both images."
+    bundled_product_name: "Panthera Works 1.0"
 licensing:
   panthera: MIT within LICENSE-SCOPE.md
   third_party: Original component licenses
