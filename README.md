@@ -1,5 +1,9 @@
 # NF-DOS 6.0
 
+[![CD Edition - Panthera Works](https://img.shields.io/badge/CD_Edition-Panthera_Works-2563eb?style=flat-square)](https://github.com/themrsbusta/Panthera-Works) [![CD Edition - NFLLM](https://img.shields.io/badge/CD_Edition-NFLLM-2563eb?style=flat-square)](https://github.com/themrsbusta/NFLLM)
+
+*Included in the CD Edition.*
+
 NF-DOS (New Frontiers DOS) began in 2006 and was revived for its twentieth anniversary in 2026. NF-DOS 6.0 uses FreeDOS Kernel 2046 and FreeCOM 0.87, with Panthera utilities, startup scripts and a CD edition containing additional applications.
 
 Developed by Panthera Softwares, a division of Panthera Research.
