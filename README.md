@@ -1,5 +1,8 @@
 # NF-DOS 6.0
 
+**Division:** Panthera Softwares. **License:** [MIT](LICENSE) (original Panthera material only).
+
+
 [![CD Edition - Panthera Works](https://img.shields.io/badge/CD_Edition-Panthera_Works-2563eb?style=flat-square)](https://github.com/themrsbusta/Panthera-Works) [![CD Edition - NFLLM](https://img.shields.io/badge/CD_Edition-NFLLM-2563eb?style=flat-square)](https://github.com/themrsbusta/NFLLM)
 
 *Included in the CD Edition.*
