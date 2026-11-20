@@ -123,6 +123,6 @@ Os ativos `NF-DOS6.0.img` e `NF-DOS6.0.iso` foram atualizados a partir dos arqui
 
 Os pacotes oficiais completos, com fontes, binários, documentação e avisos upstream, acompanham o arquivo de fontes em `packages/uide.zip` e `packages/udvd2.zip`. UIDE tem 57.170 bytes e SHA-1 `B3DBDCC5118E19AD1474BBA09768F33797186F58`; UDVD2 tem 35.734 bytes e SHA-1 `C7AED9F82327AACB5D5ADBA8BF3A7EFB21B623A0`. A comparação confirma identidade com o pacote upstream, não compilação independente.
 
-O rótulo do disquete e os nomes de diretório e títulos de produto no ISO foram atualizados para **Panthera Works 1.0**, conforme a instrução do proprietário. Avisos e datas de copyright de terceiros foram mantidos. Os nomes públicos e de download permanecem `NF-DOS 6.0`, `NF-DOS6.0.img` e `NF-DOS6.0.iso`; os hashes documentam os novos bytes.
+O splash do disquete mantém o nome da empresa **Panthera Softwares**. O diretório e os títulos da suíte no ISO usam **Panthera Works 1.0**. Avisos e datas de copyright de terceiros foram mantidos. Os nomes públicos e de download permanecem `NF-DOS 6.0`, `NF-DOS6.0.img` e `NF-DOS6.0.iso`; os hashes documentam os novos bytes.
 
 QEMU 8.2.2 iniciou ambas as imagens até a tela NF-DOS 6.0 e o prompt `A:\>`. O arquivo FAT12 passou na verificação de integridade, e o ISO foi relido com o catálogo El Torito e o boot image presentes. Esta verificação confirma inicialização e integridade do pacote, não substitui uma auditoria técnica integral do conteúdo ISO nem resolve os itens abertos já listados.

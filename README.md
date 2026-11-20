@@ -21,7 +21,7 @@ Developed by Panthera Softwares, a division of Panthera Research.
 
 ## Release asset refresh — 2026-11-20
 
-The v6.0 release assets were refreshed under the same public filenames. The floppy and ISO use UIDE and UDVD2 drivers; the source archive includes the exact official FreeDOS packages with their source, documentation and notices. The bundled Panthera Works directory and product headings use **Panthera Works 1.0**. QEMU 8.2.2 reached the NF-DOS 6.0 screen and `A:\>` prompt from both images. Current hashes are in `DOCS/SHA256SUMS.txt`.
+The v6.0 release assets were refreshed under the same public filenames. The floppy and ISO use UIDE and UDVD2 drivers; the source archive includes the exact official FreeDOS packages with their source, documentation and notices. The bundled suite directory and product headings use **Panthera Works 1.0**; the startup screen retains the company name **Panthera Softwares**. QEMU 8.2.2 reached the NF-DOS 6.0 screen and `A:\>` prompt from both images. Current hashes are in `DOCS/SHA256SUMS.txt`.
 
 ## Source code
 

@@ -17,8 +17,8 @@ repository:
 
 source_package:
   file: "SOURCE/NF-DOS-6.0-source.zip"
-  bytes: 7029890
-  sha256: "af636f809f29a8dad4ed02cdaedd79217db2da1e4073866590071ef139730a54"
+  bytes: 7029920
+  sha256: "2da6f364bea4a83e30e89c9c83d7b98af8ea4b05d1a650d951338f07db45ff68"
   entries: 2702
   zip_crc: "PASS"
   scope: "Identified NF-DOS source, patches, notices and documentation, plus exact official UIDE and UDVD2 package archives with source and upstream binaries"
@@ -31,18 +31,18 @@ release_assets:
   - file: "RELEASES/NF-DOS6.0.img"
     type: "1.44 MB FAT12 floppy image"
     bytes: 1474560
-    sha256: "6a6e80534f07aa86c621f40696dcd11d83a7236ae013371bbf76bf8f9e41618b"
+    sha256: "27334bbc88f11efa245577766560c082d7da215b06225a631e42aa9b86b6b406"
   - file: "RELEASES/NF-DOS6.0.iso"
     type: "Bootable CD ISO"
     bytes: 620429312
-    sha256: "bf247f1c0bb256ff5169844d307e33d9b6ae3837ad5c2fec43199db94112b420"
+    sha256: "9978174cec2af05163cab63930b37ea5bbb9a01fd151348e1c1a791e6449aa10"
     boot_validation: "QEMU 8.2.2 reached the NF-DOS 6.0 screen and A:\\> prompt; its boot catalog and embedded floppy image were verified."
 
 update_history:
   - date: "2026-11-20"
     release_tag: "v6.0"
     public_filenames_unchanged: true
-    changes: "Refreshed boot drivers; updated the Panthera Works product label and ISO directory to 1.0; included the exact upstream driver packages in the source archive."
+    changes: "Refreshed boot drivers; updated Panthera Works suite titles and ISO directory to 1.0; included the exact upstream driver packages in the source archive."
     replaced_assets:
       - file: "NF-DOS6.0.img"
         previous_sha256: "53c7345445f70b71d93f2094cae406bf5e79e4b1ae042c94551b6de6c9b18c62"
@@ -53,6 +53,20 @@ update_history:
       - file: "NF-DOS-6.0-source.zip"
         previous_sha256: "0371de6c1ae679f87ab73fba8cac066a793d97333f9238abaf122e3d5a256b8f"
         sha256: "af636f809f29a8dad4ed02cdaedd79217db2da1e4073866590071ef139730a54"
+  - date: "2026-11-20"
+    release_tag: "v6.0"
+    public_filenames_unchanged: true
+    changes: "Correction: restored the boot splash company name to Panthera Softwares; kept Panthera Works 1.0 as the suite name and directory."
+    replaced_assets:
+      - file: "NF-DOS6.0.img"
+        previous_sha256: "6a6e80534f07aa86c621f40696dcd11d83a7236ae013371bbf76bf8f9e41618b"
+        sha256: "27334bbc88f11efa245577766560c082d7da215b06225a631e42aa9b86b6b406"
+      - file: "NF-DOS6.0.iso"
+        previous_sha256: "bf247f1c0bb256ff5169844d307e33d9b6ae3837ad5c2fec43199db94112b420"
+        sha256: "9978174cec2af05163cab63930b37ea5bbb9a01fd151348e1c1a791e6449aa10"
+      - file: "NF-DOS-6.0-source.zip"
+        previous_sha256: "af636f809f29a8dad4ed02cdaedd79217db2da1e4073866590071ef139730a54"
+        sha256: "2da6f364bea4a83e30e89c9c83d7b98af8ea4b05d1a650d951338f07db45ff68"
 
 checksums:
   file: "DOCS/SHA256SUMS.txt"
