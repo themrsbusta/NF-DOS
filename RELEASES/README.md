@@ -1,5 +1,11 @@
-# Release assets
+# NF-DOS 6.0 release assets
 
-The final public product name is **NF-DOS 6.0**. Download `NF-DOS6.0.img`, `NF-DOS6.0.iso`, and `NF-DOS-6.0-source.zip` from the [NF-DOS 6.0 GitHub Release](https://github.com/themrsbusta/NF-DOS/releases/tag/v6.0).
+Download the ISO, floppy image, historical source archive and checksums from the [v6.0 release](https://github.com/themrsbusta/NF-DOS/releases/tag/v6.0).
 
-The disk images are intentionally kept as Release assets because the ISO is larger than GitHub's per-file Git limit. To verify the complete handoff, place the two image files here as `NF-DOS6.0.img` and `NF-DOS6.0.iso`, then run `sha256sum -c DOCS/SHA256SUMS.txt` from the repository root.
+The branch contains the browsable core source tree. The release assets remain separate. To verify the original release package using its original checksum manifest, download its original source ZIP to a local `SOURCE/NF-DOS-6.0-source.zip` path and both disk images to `RELEASES/`. From the repository root, run:
+
+```sh
+sha256sum -c DOCS/SHA256SUMS.txt
+```
+
+`DOCS/NF-DOS_60_Release.yaml` and `DOCS/SHA256SUMS.txt` are historical release records, not a manifest of the current source tree. The v6.0 tag and its assets have not been changed.
